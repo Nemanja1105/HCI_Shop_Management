@@ -1,0 +1,92 @@
+﻿<Window x:Class="HCI_Projekat_1.ManagerMain"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HCI_Projekat_1"
+        mc:Ignorable="d"
+        Title="ManagerMain" Height="600" Width="900" ResizeMode="CanMinimize"
+         WindowStartupLocation="CenterScreen"
+        
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Background="LightGray">
+            <ListView SelectionMode="Single" Background="#FFFF9042" SelectionChanged="ListView_SelectionChanged">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Center" />
+                        <Setter Property="Margin" Value="0,0,0,10" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListViewItem">
+                                    <Border Name="Border" Padding="2" SnapsToDevicePixels="true">
+                                        <ContentPresenter/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#FFD099"/>
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="#FFD099"/>
+                                           
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListViewItem Margin="0 10 0 10" Tag="UserPage">
+                    <StackPanel HorizontalAlignment="Center">
+                        <Image Source="/Images/usersIcon.jpeg" Height="24" Width="24"></Image>
+                        <Label Foreground="White" FontWeight="Bold" FontSize="16">Korisnici</Label>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem>
+                    <StackPanel HorizontalAlignment="Center">
+                        <Image Source="/Images/products.png" Height="24" Width="24"></Image>
+                        <Label Foreground="White" FontWeight="Bold" FontSize="16">Proizvodi</Label>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem>
+                    <StackPanel HorizontalAlignment="Center">
+                        <Image Source="/Images/bill.png" Height="24" Width="24"></Image>
+                        <Label Foreground="White" FontWeight="Bold" FontSize="16">Računi</Label>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem>
+                    <StackPanel HorizontalAlignment="Center">
+                        <Image Source="/Images/procurement.png" Height="24" Width="24"></Image>
+                        <Label Foreground="White" FontWeight="Bold" FontSize="16">Nabavke</Label>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem>
+                    <StackPanel HorizontalAlignment="Center">
+                        <Image Source="/Images/supplier.png" Height="24" Width="24"></Image>
+                        <Label Foreground="White" FontWeight="Bold" FontSize="16">Dobavljči</Label>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem>
+                    <StackPanel HorizontalAlignment="Center">
+                        <Image Source="/Images/actions.jpeg" Height="24" Width="24"></Image>
+                        <Label Foreground="White" FontWeight="Bold" FontSize="16">Podešavanja</Label>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem>
+                    <StackPanel HorizontalAlignment="Center">
+                        <Image Source="/Images/logout.png" Height="24" Width="24"></Image>
+                        <Label Foreground="White" FontWeight="Bold" FontSize="16">Odjava</Label>
+                    </StackPanel>
+                </ListViewItem>
+            </ListView>
+        </Border>
+        <Frame Grid.Column="1" Name="mainFrame"></Frame>
+        
+    </Grid>
+</Window>
