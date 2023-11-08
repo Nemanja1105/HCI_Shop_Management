@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Projekat_1"
         mc:Ignorable="d"
-        Title="ManagerMain" Height="600" Width="900" ResizeMode="CanMinimize"
+        Title="ManagerMain" MinHeight="650" MinWidth="1150" Height="650" Width="1150"
          WindowStartupLocation="CenterScreen"
         
         >

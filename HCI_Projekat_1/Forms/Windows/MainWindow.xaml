@@ -30,7 +30,7 @@
                 <Label FontFamily="Segoe UI" FontWeight="Bold" FontSize="16" Margin="0,0,15,0">Password</Label>
                 <PasswordBox Width="170" Height="23"></PasswordBox>
             </StackPanel>
-            <Button VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Margin="0,15,40,0" Height="35" Background="#FFF1752E" FontSize="16" FontWeight="Bold" Foreground="White" BorderBrush="#FFF1752E" Click="Button_Click">
+            <Button  Style="{StaticResource RoundButton}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Margin="0,15,40,0" Height="35" Click="Button_Click">
                 Login
             </Button>
         </StackPanel>
