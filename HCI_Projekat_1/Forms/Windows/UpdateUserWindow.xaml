@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Projekat_1"
         mc:Ignorable="d"
-        Title="UpdateUserWindow" Height="600" Width="350"
-        MinHeight="600" MinWidth="350" WindowStartupLocation="CenterScreen">
+        Title="UpdateUserWindow" Height="500" Width="350"
+        MinHeight="500" MinWidth="350" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -38,16 +38,14 @@
             <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Address:</Label>
             <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Phone number:</Label>
             <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Accout type:</Label>
-            <local:PlaceholderTextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter username" IsReadOnly="True"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter name"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter surname"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="3" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter jmb"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="4" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter address"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="5" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter phone number"></local:PlaceholderTextBox>
-            <ComboBox Grid.Row="6" Grid.Column="1" Height="28" VerticalAlignment="Center" FontSize="16" Margin="10 0 10 0" SelectedIndex="0">
-                <ComboBoxItem Content="Manager"></ComboBoxItem>
-                <ComboBoxItem Content="Worker"></ComboBoxItem>
-            </ComboBox>
+            <local:PlaceholderTextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter username" IsReadOnly="True" Text="{Binding Username}"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter name" Text="{Binding Name}"></local:PlaceholderTextBox>
+            
+            <local:PlaceholderTextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter surname" Text="{Binding Surname}" ></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox Grid.Row="3" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter jmb" Text="{Binding Jmb}"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox Grid.Row="4" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter address" Text="{Binding Adresa}"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox Grid.Row="5" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter phone number" Text="{Binding PhoneNumber}"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox Grid.Row="6" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Role" Text="{Binding Uloga,Converter={StaticResource BooleanToRoleConverter}}" IsReadOnly="True"></local:PlaceholderTextBox>
         </Grid>
 
 

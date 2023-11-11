@@ -1,0 +1,55 @@
+﻿<Window x:Class="HCI_Projekat_1.Forms.Windows.AddSuplierWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HCI_Projekat_1"
+        mc:Ignorable="d"
+        Title="AddSuplierWindow" Height="300" Width="350"
+        MinHeight="300" MinWidth="350" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal" >
+            <Label  FontWeight="Bold" FontSize="24" Name="mainLabel"  Content="Add supplier" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Image Source="/Images/supplier.png" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Name:</Label>
+            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Address:</Label>
+            <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">PhoneNumber:</Label>
+            
+            <local:PlaceholderTextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Name}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter name"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Quantity}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter address"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Barkod}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter phone number"></local:PlaceholderTextBox>
+        </Grid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
+            <Button Style="{StaticResource RoundButton}" Width="90">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Add" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                    <Image Source="/Images/add.png" Width="20" Height="20" VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+            <Button Style="{StaticResource RoundButton}" Width="90" Margin="20 0 0 0" Name="cancelButton" Click="cancelButton_Click" >
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Cancel" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                    <Image Source="/Images/cancel.png" Width="20" Height="20" VerticalAlignment="Center" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+    </Grid>
+</Window>

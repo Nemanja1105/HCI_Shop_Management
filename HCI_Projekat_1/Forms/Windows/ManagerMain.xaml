@@ -48,13 +48,13 @@
                         <Label Foreground="White" FontWeight="Bold" FontSize="16">Korisnici</Label>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem>
-                    <StackPanel HorizontalAlignment="Center">
+                <ListViewItem Tag="ProductPage">
+                    <StackPanel HorizontalAlignment="Center" >
                         <Image Source="/Images/products.png" Height="24" Width="24"></Image>
                         <Label Foreground="White" FontWeight="Bold" FontSize="16">Proizvodi</Label>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem>
+                <ListViewItem Tag="BillPage">
                     <StackPanel HorizontalAlignment="Center">
                         <Image Source="/Images/bill.png" Height="24" Width="24"></Image>
                         <Label Foreground="White" FontWeight="Bold" FontSize="16">Računi</Label>
@@ -66,10 +66,16 @@
                         <Label Foreground="White" FontWeight="Bold" FontSize="16">Nabavke</Label>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem>
+                <ListViewItem Tag="SupplierPage">
                     <StackPanel HorizontalAlignment="Center">
                         <Image Source="/Images/supplier.png" Height="24" Width="24"></Image>
-                        <Label Foreground="White" FontWeight="Bold" FontSize="16">Dobavljči</Label>
+                        <Label Foreground="White" FontWeight="Bold" FontSize="16">Dobavljaci</Label>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem Tag="CategoryPage">
+                    <StackPanel HorizontalAlignment="Center" >
+                        <Image Source="/Images/sifarnik.png" Height="24" Width="24"></Image>
+                        <Label Foreground="White" FontWeight="Bold" FontSize="16">Kategorije</Label>
                     </StackPanel>
                 </ListViewItem>
                 <ListViewItem>
@@ -86,7 +92,7 @@
                 </ListViewItem>
             </ListView>
         </Border>
-        <Frame Grid.Column="1" Name="mainFrame"></Frame>
+        <Frame Grid.Column="1" Name="mainFrame" NavigationUIVisibility="Hidden" ></Frame>
         
     </Grid>
 </Window>

@@ -1,5 +1,4 @@
-﻿using HCI_Projekat_1.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,16 +15,13 @@ using System.Windows.Shapes;
 namespace HCI_Projekat_1.Forms.Windows
 {
     /// <summary>
-    /// Interaction logic for UpdateUserWindow.xaml
+    /// Interaction logic for AddCategoryWindow.xaml
     /// </summary>
-    public partial class UpdateUserWindow : Window
+    public partial class AddCategoryWindow : Window
     {
-        public Employee Employee { get;}
-        public UpdateUserWindow(Employee employee)
+        public AddCategoryWindow()
         {
             InitializeComponent();
-            Employee = employee;
-            this.DataContext = Employee;
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)

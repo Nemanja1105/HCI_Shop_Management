@@ -16,19 +16,22 @@ using System.Windows.Shapes;
 namespace HCI_Projekat_1.Forms.Windows
 {
     /// <summary>
-    /// Interaction logic for UpdateUserWindow.xaml
+    /// Interaction logic for BillDetailsWindow.xaml
     /// </summary>
-    public partial class UpdateUserWindow : Window
+    public partial class BillDetailsWindow : Window
     {
-        public Employee Employee { get;}
-        public UpdateUserWindow(Employee employee)
+        private Bill bill;
+        public BillDetailsWindow(Bill bill)
         {
             InitializeComponent();
-            Employee = employee;
-            this.DataContext = Employee;
+            this.bill = bill;
+            this.DataContext = bill;
+            this.billGrid.DataContext = bill.Billitem;
+            cancelGrid.DataContext = bill;
+
         }
 
-        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        private void closeButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
