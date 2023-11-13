@@ -7,12 +7,24 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Images\createProcurement.png" />
+    <None Remove="Images\profile.png" />
+    <None Remove="Images\quantity.png" />
     <None Remove="Images\sifarnik.png" />
+    <None Remove="Images\themes.png" />
+    <None Remove="Images\transfer.png" />
+    <None Remove="Images\translate.png" />
     <None Remove="Images\view.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\createProcurement.png" />
     <Resource Include="Images\password.png" />
+    <Resource Include="Images\profile.png" />
+    <Resource Include="Images\quantity.png" />
     <Resource Include="Images\sifarnik.png" />
+    <Resource Include="Images\themes.png" />
+    <Resource Include="Images\transfer.png" />
+    <Resource Include="Images\translate.png" />
     <Resource Include="Images\username.png" />
   </ItemGroup>
   <ItemGroup>

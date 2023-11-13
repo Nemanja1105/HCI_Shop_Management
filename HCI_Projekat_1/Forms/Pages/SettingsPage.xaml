@@ -1,0 +1,104 @@
+﻿<Page x:Class="HCI_Projekat_1.Forms.Pages.SettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HCI_Projekat_1"
+      mc:Ignorable="d" 
+                 d:DesignHeight="634" d:DesignWidth="985"
+d:MinHeight="634" d:MinWidth="985"
+      Title="SettingsPage">
+
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="12.5*" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" Content="Settings"/>
+        <Grid Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Separator Grid.Row="0" VerticalAlignment="Top"></Separator>
+            <Separator Grid.Row="1" VerticalAlignment="Top"></Separator>
+            <Separator Grid.Row="2" VerticalAlignment="Top"></Separator>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal"  Grid.Row="0" Margin="10 0 0 0">
+                    <Image Source="/Images/profile.png" Width="24" Height="24" VerticalAlignment="Center"></Image>
+                    <Label Margin="5 0 0 0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold">My profile</Label>
+                </StackPanel>
+
+                <Label Grid.Row="1" Grid.Column="0" Margin="20 0 0 0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold">Username:</Label>
+                <local:PlaceholderTextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Width="250" FontSize="16" Placeholder="Enter username" Margin="10 0 0 0" HorizontalAlignment="Left"></local:PlaceholderTextBox>
+
+
+                <Label Margin="20 0 0 0" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold">Old Password:</Label>
+                <local:PlaceholderTextBox Grid.Column="1" Grid.Row="2" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Width="250" FontSize="16" Placeholder="Enter Old Password" Margin="10 0 0 0" HorizontalAlignment="Left"></local:PlaceholderTextBox>
+
+                <Label Margin="20 0 0 0" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold">New Password:</Label>
+                <local:PlaceholderTextBox Grid.Column="1" Grid.Row="3" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Width="250" FontSize="16" Placeholder="Enter New Password" Margin="10 0 0 0" HorizontalAlignment="Left"></local:PlaceholderTextBox>
+
+                <Button Grid.Column="1" Grid.Row="4" Style="{StaticResource RoundButton}" Width="90" Height="30" HorizontalAlignment="Left" Margin="10 0 0 0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Update" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                        <Image Source="/Images/update.png" Width="20" Height="20" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="4*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal"  Grid.Row="0" Margin="10 0 0 0">
+                    <Image Source="/Images/themes.png" Width="24" Height="24" VerticalAlignment="Center"></Image>
+                    <Label Margin="5 0 0 0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold">Appearance</Label>
+                </StackPanel>
+
+                <Label Margin="20 0 0 0" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold">Theme:</Label>
+                <ComboBox Name="themeCombo"  Grid.Row="1" Grid.Column="1" Height="28" Width="250" ItemsSource="{Binding}" VerticalAlignment="Top" FontSize="16" Margin="10 0 0 0" SelectedValue="{Binding Supplier}" HorizontalAlignment="Left">
+
+                </ComboBox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="4*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal"  Grid.Row="0" Margin="10 0 0 0">
+                    <Image Source="/Images/translate.png" Width="24" Height="24" VerticalAlignment="Center"></Image>
+                    <Label Margin="5 0 0 0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold">Language</Label>
+                </StackPanel>
+
+                <Label Margin="20 0 0 0" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold">Language:</Label>
+                <ComboBox Name="languageCombo"  Grid.Row="1" Grid.Column="1" Height="28" Width="250" ItemsSource="{Binding}" VerticalAlignment="Top" FontSize="16" Margin="10 0 0 0" SelectedValue="{Binding Supplier}" HorizontalAlignment="Left">
+
+                </ComboBox>
+            </Grid>
+
+
+        </Grid>
+    </Grid>
+</Page>

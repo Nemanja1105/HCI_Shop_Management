@@ -15,14 +15,25 @@ using System.Windows.Shapes;
 namespace HCI_Projekat_1.Forms.Windows
 {
     /// <summary>
-    /// Interaction logic for AddCategoryWindow.xaml
+    /// Interaction logic for AddProductToProcurement.xaml
     /// </summary>
-    public partial class AddCategoryWindow : Window
+    public partial class AddProductToProcurement : Window
     {
-        public AddCategoryWindow()
+        public decimal Quantity { get; set; } = 0;
+        public AddProductToProcurement()
         {
             InitializeComponent();
         }
+
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(e.Text, e.Text.Length - 1))
+            {
+                e.Handled = true;
+            }
+        }
+
+
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
@@ -31,7 +42,8 @@ namespace HCI_Projekat_1.Forms.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Quantity = int.Parse(quantityTextBox.Text);
+            this.Close();
         }
     }
 }

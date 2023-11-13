@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HCI_Projekat_1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,23 +16,22 @@ using System.Windows.Shapes;
 namespace HCI_Projekat_1.Forms.Windows
 {
     /// <summary>
-    /// Interaction logic for AddCategoryWindow.xaml
+    /// Interaction logic for ProcurementDetailsWindow.xaml
     /// </summary>
-    public partial class AddCategoryWindow : Window
+    public partial class ProcurementDetailsWindow : Window
     {
-        public AddCategoryWindow()
+        private Procurement procurement;
+        public ProcurementDetailsWindow(Procurement procurement)
         {
             InitializeComponent();
+            this.procurement= procurement;
+            this.DataContext = procurement;
+            this.procurementGrid.DataContext = procurement.Procurementitem;
         }
 
-        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        private void closeButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

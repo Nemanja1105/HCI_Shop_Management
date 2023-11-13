@@ -28,7 +28,7 @@ public partial class Procurement
 
     public DateTime DateOfAcquisition { get; set; }
 
-    public int TotalPrice { get; set; }
+    public decimal TotalPrice { get; set; }
 
     public int SupplierId { get; set; }
 

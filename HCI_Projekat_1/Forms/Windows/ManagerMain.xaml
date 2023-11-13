@@ -60,7 +60,7 @@
                         <Label Foreground="White" FontWeight="Bold" FontSize="16">Računi</Label>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem>
+                <ListViewItem Tag="ProcurementPage">
                     <StackPanel HorizontalAlignment="Center">
                         <Image Source="/Images/procurement.png" Height="24" Width="24"></Image>
                         <Label Foreground="White" FontWeight="Bold" FontSize="16">Nabavke</Label>
@@ -78,7 +78,7 @@
                         <Label Foreground="White" FontWeight="Bold" FontSize="16">Kategorije</Label>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem>
+                <ListViewItem Tag="SettingsPage">
                     <StackPanel HorizontalAlignment="Center">
                         <Image Source="/Images/actions.jpeg" Height="24" Width="24"></Image>
                         <Label Foreground="White" FontWeight="Bold" FontSize="16">Podešavanja</Label>

@@ -10,28 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HCI_Projekat_1.Forms.Windows
+namespace HCI_Projekat_1.Forms.Pages
 {
     /// <summary>
-    /// Interaction logic for AddCategoryWindow.xaml
+    /// Interaction logic for SettingsPage.xaml
     /// </summary>
-    public partial class AddCategoryWindow : Window
+    public partial class SettingsPage : Page
     {
-        public AddCategoryWindow()
+        public SettingsPage()
         {
             InitializeComponent();
-        }
-
-        private void cancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
