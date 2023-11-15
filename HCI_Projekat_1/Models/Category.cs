@@ -20,17 +20,14 @@ public partial class Category : IEquatable<Category>
 
     public int Id { get; set; }
 
-    public string Name { get; set; }
+    public string Name { get; set; } = "";
 
     public virtual ICollection<Product> Product { get; set; } = new List<Product>();
 
     public bool Equals(Category other)
     {
         if(other == null) return false;
-        return Name.Equals(other.Name);
+        return Id.Equals(other.Id);
     }
-    public override int GetHashCode()
-    {
-        return Name.GetHashCode();
-    }
+    
 }

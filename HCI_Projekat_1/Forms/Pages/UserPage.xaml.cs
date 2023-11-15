@@ -1,5 +1,7 @@
 ﻿using HCI_Projekat_1.Forms.Windows;
 using HCI_Projekat_1.Models;
+using HCI_Projekat_1.Models.Enums;
+using HCI_Projekat_1.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,31 +25,53 @@ namespace HCI_Projekat_1.Forms.Pages
     /// </summary>
     public partial class UserPage : Page
     {
-        private ObservableCollection<Employee> data;
+        private EmployeeViewModel employeeViewModel = new EmployeeViewModel();
+        private List<UserType> userTypes = Enum.GetValues(typeof(UserType)).Cast<UserType>().ToList();
+        private bool isComboBoxInitialized = false;
         public UserPage()
         {
             InitializeComponent();
-            data = new ObservableCollection<Employee>();
-            data.Add(new Employee { Id = 1, Username = "Marko123", Name = "Marko", Surname = "Markovic", Jmb = "1234567890123", Adresa = "Beogradska 3", PhoneNumber = "066391652", Uloga = true });
-            data.Add(new Employee { Id = 2, Username = "Marko123", Name = "Pera", Surname = "Peric", Jmb = "1234567890123", Adresa = "Beogradska 4", PhoneNumber = "066391652", Uloga = false });
-            data.Add(new Employee { Id = 3, Username = "Marko123", Name = "Marko", Surname = "Markovic", Jmb = "1234567890123", Adresa = "Beogradska 3", PhoneNumber = "066391652", Uloga = true });
-            data.Add(new Employee { Id = 4, Username = "Marko123", Name = "Pera", Surname = "Peric", Jmb = "1234567890123", Adresa = "Beogradska 4", PhoneNumber = "066391652", Uloga = false });
-            userGrid.DataContext = data;
+            userTypeCombo.ItemsSource = userTypes;
         }
-
-
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            new AddUserWindow().ShowDialog();
+            InitializeAsync();
+            isComboBoxInitialized = true;
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private async Task InitializeAsync()
         {
-
+            try
+            {
+                await employeeViewModel.FindAll();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            this.DataContext = employeeViewModel;
         }
 
-        private void updateButton_Click(object sender, RoutedEventArgs e)
+
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new AddUserWindow();
+            dialog.ShowDialog();
+            if (dialog.Employee == null)
+                return;
+            try
+            {
+                await employeeViewModel.Insert(dialog.Employee);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+
+        private async void updateButton_Click(object sender, RoutedEventArgs e)
         {
             var selected = (Employee)userGrid.SelectedValue;
             if (selected != null)
@@ -56,20 +80,41 @@ namespace HCI_Projekat_1.Forms.Pages
                 updateWindows.ShowDialog();
                 userGrid.UnselectAll();
                 var updated = updateWindows.Employee;
-                MessageBox.Show(updated.Name);
+                if (updated != null)
+                {
+                    try
+                    {
+                        this.employeeViewModel.Update(updated);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
             }
 
 
         }
 
-        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        private async void deleteButton_Click(object sender, RoutedEventArgs e)
         {
             var selected = (Employee)userGrid.SelectedValue;
             if (selected != null)
             {
                 var Result = MessageBox.Show("Are you sure you want to delete the user?", "Delete user?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (Result == MessageBoxResult.Yes)
-                    data.Remove(selected);
+                {
+                    try
+                    {
+                        await employeeViewModel.Delete(selected);
+                        
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+                userGrid.UnselectAll();
             }
         }
     }

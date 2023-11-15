@@ -20,7 +20,7 @@ namespace HCI_Projekat_1.Forms.Windows
     /// </summary>
     public partial class UpdateUserWindow : Window
     {
-        public Employee Employee { get;}
+        public Employee Employee { get; set; }
         public UpdateUserWindow(Employee employee)
         {
             InitializeComponent();
@@ -30,6 +30,23 @@ namespace HCI_Projekat_1.Forms.Windows
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
+            Employee = null;
+            this.Close();
+        }
+
+        private void updateButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(nameTextBox.Text) || string.IsNullOrEmpty(surnameTextBox.Text) || string.IsNullOrEmpty(jmbTextBox.Text) ||
+                string.IsNullOrEmpty(addressTextBox.Text) || string.IsNullOrEmpty(phoneNumberTextBox.Text))
+            {
+                MessageBox.Show("Sva polja forme moraju biti popunjena", "Greska pri unosu", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            Employee.Name = nameTextBox.Text;
+            Employee.Surname = surnameTextBox.Text;
+            Employee.Jmb = jmbTextBox.Text;
+            Employee.Adresa = addressTextBox.Text;
+            Employee.PhoneNumber = phoneNumberTextBox.Text;
             this.Close();
         }
     }

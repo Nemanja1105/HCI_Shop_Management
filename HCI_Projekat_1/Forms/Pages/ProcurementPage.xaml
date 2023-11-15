@@ -50,13 +50,13 @@ d:MinHeight="634" d:MinWidth="985"
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2" Margin="20,10,20,20" >
-            <DataGrid  x:Name="procurementGrid" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding}" AutoGenerateColumns="False" AlternatingRowBackground="#FFD099">
+            <DataGrid  x:Name="procurementGrid" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding}" AutoGenerateColumns="False" AlternatingRowBackground="{DynamicResource Secondary}">
                 <DataGrid.Resources>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="FontWeight" Value="Bold" />
                         <Setter Property="FontSize" Value="16"/>
                         <Setter Property="Height" Value="30" />
-                        <Setter Property="Background" Value="#FFF1752E"></Setter>
+                        <Setter Property="Background" Value="{DynamicResource Primary}"></Setter>
                         <Setter Property="Foreground" Value="White"></Setter>
                     </Style>
                     <Style TargetType="DataGridRow">

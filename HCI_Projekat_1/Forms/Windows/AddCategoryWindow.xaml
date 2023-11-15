@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HCI_Projekat_1"
         mc:Ignorable="d"
         Title="AddCategoryWindow" Height="170" Width="350"
-        MinHeight="170" MinWidth="350" WindowStartupLocation="CenterScreen">
+        MinHeight="170" MinWidth="350" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -31,10 +31,10 @@
         </Grid>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
-            <Button Style="{StaticResource RoundButton}" Width="90">
+            <Button Style="{StaticResource RoundButton}" Width="90" Name="addUpdateButton" Click="addUpdateButton_Click">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Add" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
-                    <Image Source="/Images/add.png" Width="20" Height="20" VerticalAlignment="Center" />
+                    <TextBlock Name="buttonText" Text="Add" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                    <Image Name="buttonImage" Source="/Images/add.png" Width="20" Height="20" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource RoundButton}" Width="90" Margin="20 0 0 0" Name="cancelButton" Click="cancelButton_Click" >

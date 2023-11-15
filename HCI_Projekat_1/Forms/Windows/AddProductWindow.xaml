@@ -39,15 +39,15 @@
             <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Purchase Price:</Label>
             <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Selling Price:</Label>
             <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Category:</Label>
-            
-            <local:PlaceholderTextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Name}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter name"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Quantity}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter quantity"></local:PlaceholderTextBox>
+
+            <local:PlaceholderTextBox   Grid.Row="0" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Name}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter name"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox x:Name="quantityTextBox" Grid.Row="1" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Quantity}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter quantity"></local:PlaceholderTextBox>
             <local:PlaceholderTextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Barkod}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter barcode"></local:PlaceholderTextBox>
             <ComboBox Name="unitCombo" Grid.Row="3" Grid.Column="1" Height="28" ItemsSource="{Binding}" VerticalAlignment="Center" FontSize="16" Margin="10 0 10 0" SelectedValue="{Binding UnitOfMeasure}">
                 
             </ComboBox>
-            <local:PlaceholderTextBox Grid.Row="4" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter price" Text="{Binding PurchasePrice}"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="5" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter price" Text="{Binding SellingPrice}"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox x:Name="purcTextBox" Grid.Row="4" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter price" Text="{Binding PurchasePrice}"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox x:Name="sellTextBox" Grid.Row="5" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter price" Text="{Binding SellingPrice}"></local:PlaceholderTextBox>
             <ComboBox Name="categoryCombo" Grid.Row="6" Grid.Column="1" Height="28" ItemsSource="{Binding}" DisplayMemberPath="Name" VerticalAlignment="Center" FontSize="16" Margin="10 0 10 0" SelectedValue="{Binding Category}">
                 
             </ComboBox>
@@ -56,10 +56,10 @@
 
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
-            <Button Style="{StaticResource RoundButton}" Width="90">
+            <Button Style="{StaticResource RoundButton}" Width="90" Name="addupdateButton" Click="addupdateButton_Click">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Add" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
-                    <Image Source="/Images/add.png" Width="20" Height="20" VerticalAlignment="Center" />
+                    <TextBlock x:Name="buttonText" Text="Add" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                    <Image x:Name="buttonImage" Source="/Images/add.png" Width="20" Height="20" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource RoundButton}" Width="90" Margin="20 0 0 0" Name="cancelButton" Click="cancelButton_Click" >

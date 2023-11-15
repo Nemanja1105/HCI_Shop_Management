@@ -4,62 +4,70 @@
              xmlns:local="clr-namespace:HCI_Projekat_1"
              StartupUri="/Forms/Windows/MainWindow.xaml">
     <Application.Resources>
-        <Style TargetType="Button" x:Key="RoundButton">
-            <Setter Property="Background" Value="#FFF1752E" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="BorderBrush" Value="#FFF1752E" />
-            <Setter Property="FontSize" Value="16" />
-            <Setter Property="FontWeight" Value="Bold" />
 
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="7">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#FFD099" />
-                                <Setter TargetName="border" Property="BorderBrush" Value="#FFD099" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+       
 
-      
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes\BlueTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Button" x:Key="RoundButton">
+                <Setter Property="Background" Value="{DynamicResource Primary}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="BorderBrush" Value="{DynamicResource Primary}" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontWeight" Value="Bold" />
 
-        <Style TargetType="local:PlaceholderTextBox" x:Key="PlaceholderTextBoxStyle">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="local:PlaceholderTextBox">
-                        <Grid>
-                            <Border x:Name="border" BorderBrush="Gray" BorderThickness="1" CornerRadius="5">
-                                <Grid>
-                                    <TextBox x:Name="PART_TextBox" Background="Transparent" BorderThickness="1" BorderBrush="Gray" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Text, UpdateSourceTrigger=PropertyChanged}"/>
-                                    <TextBlock x:Name="PART_Placeholder" Text="{TemplateBinding Placeholder}" Foreground="Gray" Margin="5,0,0,0" Visibility="Collapsed"/>
-                                </Grid>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="7">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                             </Border>
-                        </Grid>
-                        <ControlTemplate.Triggers>
-                            <DataTrigger Binding="{Binding Text, ElementName=PART_TextBox}" Value="">
-                                <Setter TargetName="PART_Placeholder" Property="Visibility" Value="Visible" />
-                            </DataTrigger>
-                            <Trigger Property="IsKeyboardFocusWithin" Value="True">
-                                <Setter TargetName="PART_Placeholder" Property="Visibility" Value="Collapsed" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource Secondary}" />
+                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource Secondary}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
 
-        <local:BooleanToRoleConverter x:Key="BooleanToRoleConverter"/>
-        <local:BooleanToPaymentTypeConverter x:Key="BooleanToPaymentTypeConverter"/>
-        <local:CollectionToCanceledBillConvertor x:Key="CollectionToCanceledBillConvertor"/>
-        <local:BooleanToVisibleConvertercs x:Key="BooleanToVisibleConvertercs"/>
-        <local:DateToStringConver x:Key="DateToStringConver"/>
+
+
+            <Style TargetType="local:PlaceholderTextBox" x:Key="PlaceholderTextBoxStyle">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="local:PlaceholderTextBox">
+                            <Grid>
+                                <Border x:Name="border" BorderBrush="Gray" BorderThickness="1" CornerRadius="5">
+                                    <Grid>
+                                        <TextBox x:Name="PART_TextBox" Background="Transparent" BorderThickness="1" BorderBrush="Gray" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Text, UpdateSourceTrigger=PropertyChanged}"/>
+                                        <TextBlock x:Name="PART_Placeholder" Text="{TemplateBinding Placeholder}" Foreground="Gray" Margin="5,0,0,0" Visibility="Collapsed"/>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <DataTrigger Binding="{Binding Text, ElementName=PART_TextBox}" Value="">
+                                    <Setter TargetName="PART_Placeholder" Property="Visibility" Value="Visible" />
+                                </DataTrigger>
+                                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                    <Setter TargetName="PART_Placeholder" Property="Visibility" Value="Collapsed" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <local:BooleanToRoleConverter x:Key="BooleanToRoleConverter"/>
+            <local:BooleanToPaymentTypeConverter x:Key="BooleanToPaymentTypeConverter"/>
+            <local:CollectionToCanceledBillConvertor x:Key="CollectionToCanceledBillConvertor"/>
+            <local:BooleanToVisibleConvertercs x:Key="BooleanToVisibleConvertercs"/>
+            <local:DateToStringConver x:Key="DateToStringConver"/>
+        </ResourceDictionary>
 
     </Application.Resources>
 </Application>

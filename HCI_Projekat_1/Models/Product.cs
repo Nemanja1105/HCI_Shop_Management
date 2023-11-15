@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace HCI_Projekat_1.Models;
 
-public partial class Product
+public partial class Product:IEquatable<Product>
 {
     public Product() { }
 
@@ -67,4 +67,16 @@ public partial class Product
     public virtual Category Category { get; set; }
 
     public virtual ICollection<Procurementitem> Procurementitem { get; set; } = new List<Procurementitem>();
+
+    public bool Equals(Product other)
+    {
+        if (other == null)
+            return false;
+        return this.Id == other.Id;
+    }
+
+    public override int GetHashCode()
+    {
+        return this.Id.GetHashCode();
+    }
 }

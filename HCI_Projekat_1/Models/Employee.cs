@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace HCI_Projekat_1.Models;
 
-public partial class Employee: INotifyPropertyChanged
+public partial class Employee:IEquatable<Employee>,ICloneable
 {
     public Employee() { }
 
@@ -37,6 +37,8 @@ public partial class Employee: INotifyPropertyChanged
         Language = language;
     }
 
+    
+
     public int Id { get; set; }
 
     public string Username { get; set; }
@@ -57,9 +59,9 @@ public partial class Employee: INotifyPropertyChanged
 
     public bool Uloga { get; set; }
 
-    public string Theme { get; set; }
+    public string? Theme { get; set; }
 
-    public string Language { get; set; }
+    public string? Language { get; set; }
 
     public virtual ICollection<Bill> Bill { get; set; } = new List<Bill>();
 
@@ -67,10 +69,24 @@ public partial class Employee: INotifyPropertyChanged
 
     public virtual ICollection<Procurement> Procurement { get; set; } = new List<Procurement>();
 
-    public event PropertyChangedEventHandler PropertyChanged;
+   
 
-    protected void OnPropertyChanged(string propertyName)
+    public object Clone()
     {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        throw new NotImplementedException();
     }
+
+    public bool Equals(Employee other)
+    {
+        if (other == null)
+            return false;
+        return other.Id == this.Id;
+    }
+
+    public override int GetHashCode()
+    {
+        return Id.GetHashCode();
+    }
+
+   
 }

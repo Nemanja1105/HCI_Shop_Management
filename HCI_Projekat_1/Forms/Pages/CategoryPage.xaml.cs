@@ -1,5 +1,8 @@
 ﻿using HCI_Projekat_1.Forms.Windows;
 using HCI_Projekat_1.Models;
+using HCI_Projekat_1.ViewModel;
+using Microsoft.EntityFrameworkCore;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,35 +26,95 @@ namespace HCI_Projekat_1.Forms.Pages
     /// </summary>
     public partial class CategoryPage : Page
     {
-        private ObservableCollection<Category> categories=new ObservableCollection<Category>();
+        private CategoryViewModel categoryViewModel = new CategoryViewModel();
         public CategoryPage()
         {
             InitializeComponent();
-            categories.Add(new Category("Voce"));
-            categories.Add(new Category("Povrce"));
-            categories.Add(new Category("Suhomesnato"));
-            categories.Add(new Category("Sir"));
-            categories.Add(new Category("Meso"));
-            categories.Add(new Category("Gotova jela"));
-            categoryGrid.DataContext = categories;
 
         }
 
-        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            InitializeAsync();
+
+        }
+        private async Task InitializeAsync()
+        {
+            try
+            {
+                await categoryViewModel.FindAll();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            this.DataContext = categoryViewModel;
+        }
+
+        private async void deleteButton_Click(object sender, RoutedEventArgs e)
         {
             var selected = (Category)categoryGrid.SelectedValue;
             if (selected != null)
             {
-                var Result = MessageBox.Show("Are you sure you want to delete the category?", "Delete category?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var Result = MessageBox.Show("Are you sure you want to delete the category??", "Delete category?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (Result == MessageBoxResult.Yes)
-                    categories.Remove(selected);
+                {
+                    try
+                    {
+                        await categoryViewModel.Delete(selected);
+
+                    }
+                    catch (DbUpdateException ex)
+                    {
+                        if (ex.InnerException is MySqlException mySqlEx && mySqlEx.Number == 1451)
+                        {
+                            MessageBox.Show("Postoje proizvodi za datu kategoriju. Brisanje nije dozvoljeno.", "Brisanje nije moguce", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                        else
+                            MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
                 categoryGrid.UnselectAll();
             }
         }
 
-        private void addButton_Click(object sender, RoutedEventArgs e)
+        private async void addButton_Click(object sender, RoutedEventArgs e)
         {
-            new AddCategoryWindow().ShowDialog();
+            var dialog = new AddCategoryWindow();
+            dialog.ShowDialog();
+            if (dialog.Category == null)
+                return;
+            try
+            {
+                await categoryViewModel.Insert(dialog.Category);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private async void updateButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selected = (Category)categoryGrid.SelectedValue;
+            if (selected != null)
+            {
+                var updateWindows = new AddCategoryWindow(selected);
+                updateWindows.ShowDialog();
+                categoryGrid.UnselectAll();
+                var updated = updateWindows.Category;
+                if (updated != null)
+                {
+                    try
+                    {
+                        await this.categoryViewModel.Update(updated);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
         }
     }
 }

@@ -42,23 +42,22 @@
             <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Address:</Label>
             <Label Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Phone number:</Label>
             <Label Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Accout type:</Label>
-            <local:PlaceholderTextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter username"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter password"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter password"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="3" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter name"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="4" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter surname"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="5" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter jmb"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="6" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter address"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="7" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter phone number"></local:PlaceholderTextBox>
-            <ComboBox Grid.Row="8" Grid.Column="1" Height="28" VerticalAlignment="Center" FontSize="16" Margin="10 0 10 0" SelectedIndex="0">
-                <ComboBoxItem Content="Manager"></ComboBoxItem>
-                <ComboBoxItem Content="Worker"></ComboBoxItem>
+            <local:PlaceholderTextBox x:Name="usernameTextBox" Grid.Row="0" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter username"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox x:Name="passwordTextBox" Grid.Row="1" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter password"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox x:Name="repeatPasswordTextBox" Grid.Row="2" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter password"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox x:Name="nameTextBox" Grid.Row="3" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter name"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox x:Name="surnameTextBox"  Grid.Row="4" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter surname"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox x:Name="jmbTextBox" Grid.Row="5" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter jmb"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox x:Name="addressTextBox" Grid.Row="6" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter address"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox x:Name="numberTextBox" Grid.Row="7" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter phone number"></local:PlaceholderTextBox>
+            <ComboBox Grid.Row="8" Grid.Column="1" Height="28" ItemsSource="{Binding}" VerticalAlignment="Center" FontSize="16" Margin="10 0 10 0" SelectedIndex="0" Name="roleComboBox">
+               
             </ComboBox>
         </Grid>
 
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
-            <Button Style="{StaticResource RoundButton}" Width="90">
+            <Button Style="{StaticResource RoundButton}" Width="90" Name="AddButton" Click="AddButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Add" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                     <Image Source="/Images/add.png" Width="20" Height="20" VerticalAlignment="Center" />

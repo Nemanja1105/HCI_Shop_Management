@@ -153,7 +153,6 @@ public partial class ShopManagementContext : DbContext
                 .IsRequired()
                 .HasMaxLength(45);
             entity.Property(e => e.Theme)
-                .IsRequired()
                 .HasMaxLength(45);
             entity.Property(e => e.Username)
                 .IsRequired()

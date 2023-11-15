@@ -17,6 +17,11 @@
     <None Remove="Images\view.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Remove="Themes\BlueTheme.xaml" />
+    <Page Remove="Themes\GreenTheme.xaml" />
+    <Page Remove="Themes\OrangeTheme.xaml" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\createProcurement.png" />
     <Resource Include="Images\password.png" />
     <Resource Include="Images\profile.png" />
@@ -66,6 +71,9 @@
   <ItemGroup>
     <Resource Include="Images\cancel.png" />
     <Resource Include="Images\view.png" />
+    <Resource Include="Themes\BlueTheme.xaml" />
+    <Resource Include="Themes\GreenTheme.xaml" />
+    <Resource Include="Themes\OrangeTheme.xaml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />

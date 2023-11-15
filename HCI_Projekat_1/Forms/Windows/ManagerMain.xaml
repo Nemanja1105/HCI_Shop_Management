@@ -17,7 +17,7 @@
 
         <!-- Sidebar -->
         <Border Background="LightGray">
-            <ListView SelectionMode="Single" Background="#FFFF9042" SelectionChanged="ListView_SelectionChanged">
+            <ListView SelectionMode="Single" Background="{DynamicResource SideMenu}" SelectionChanged="ListView_SelectionChanged">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -30,10 +30,10 @@
                                     </Border>
                                     <ControlTemplate.Triggers>
                                         <Trigger Property="IsMouseOver" Value="True">
-                                            <Setter TargetName="Border" Property="Background" Value="#FFD099"/>
+                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource Secondary}"/>
                                         </Trigger>
                                         <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="Border" Property="Background" Value="#FFD099"/>
+                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource Secondary}"/>
                                            
                                         </Trigger>
                                     </ControlTemplate.Triggers>

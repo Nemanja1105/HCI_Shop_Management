@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace HCI_Projekat_1.Models
 {
-    enum PaymentType
+    class Theme
     {
-        Cash,Card
+        public String Name { get; set; }
+        public String Path { get; set; }
     }
 }

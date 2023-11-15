@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
        d:DesignHeight="634" d:DesignWidth="985"
  d:MinHeight="634" d:MinWidth="985"
-      Title="ProductPage">
+      Title="ProductPage" Loaded="Page_Loaded">
 
     <Grid Background="WHITE">
         <Grid.RowDefinitions>
@@ -23,12 +23,10 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold">Category:</Label>
             <StackPanel Grid.Row="1"  Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <ComboBox Grid.Row="1" MinWidth="120" Height="28" VerticalAlignment="Center" SelectedIndex="0" FontSize="16">
-                    <ComboBoxItem Content="All"></ComboBoxItem>
-                    <ComboBoxItem Content="Voce"></ComboBoxItem>
-                    <ComboBoxItem Content="Povrce"></ComboBoxItem>
+                <ComboBox ItemsSource="{Binding Categories}" Grid.Row="1" MinWidth="120" Height="28" DisplayMemberPath="Name" VerticalAlignment="Center" SelectedValue="{Binding CategoryFilter,UpdateSourceTrigger=PropertyChanged}" FontSize="16" >
+                    
                 </ComboBox>
-                <local:PlaceholderTextBox Style="{StaticResource PlaceholderTextBoxStyle}" Width="400" Height="28" Margin="10,0,0,0" FontSize="16" Placeholder="Search by name"/>
+                <local:PlaceholderTextBox Style="{StaticResource PlaceholderTextBoxStyle}" Width="400" Height="28" Margin="10,0,0,0" FontSize="16" Placeholder="Search by name" Text="{Binding SearchFilter,UpdateSourceTrigger=PropertyChanged }"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Height="30" VerticalAlignment="Top">
@@ -53,13 +51,13 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="2" Margin="20,10,20,20" >
-            <DataGrid  x:Name="productGrid" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding}" AutoGenerateColumns="False" AlternatingRowBackground="#FFD099">
+            <DataGrid  x:Name="productGrid" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding Data}" AutoGenerateColumns="False" AlternatingRowBackground="{DynamicResource Secondary}">
                 <DataGrid.Resources>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="FontWeight" Value="Bold" />
                         <Setter Property="FontSize" Value="16"/>
                         <Setter Property="Height" Value="30" />
-                        <Setter Property="Background" Value="#FFF1752E"></Setter>
+                        <Setter Property="Background" Value="{DynamicResource Primary}"></Setter>
                         <Setter Property="Foreground" Value="White"></Setter>
                     </Style>
 

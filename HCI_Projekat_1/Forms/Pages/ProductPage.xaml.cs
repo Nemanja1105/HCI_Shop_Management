@@ -1,5 +1,6 @@
 ﻿using HCI_Projekat_1.Forms.Windows;
 using HCI_Projekat_1.Models;
+using HCI_Projekat_1.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,46 +24,94 @@ namespace HCI_Projekat_1.Forms.Pages
     /// </summary>
     public partial class ProductPage : Page
     {
-        private ObservableCollection<Product> products;
+        private ProductViewModel productViewModel=new ProductViewModel();
         public ProductPage()
         {
             InitializeComponent();
-            products = new ObservableCollection<Product>();
-            products.Add(new Product{ Id=1,Name="Jabuke", Quantity =8.0M, Barkod ="123456", UnitOfMeasure =UnitOfMeasure.Kg.ToString(), PurchasePrice =1.4M, SellingPrice =2.4M, Category =new Category("Voce")});
-            products.Add(new Product { Id = 2, Name = "Kruske", Quantity = 18.0M, Barkod = "12345698", UnitOfMeasure = "Kg", PurchasePrice = 2.4M, SellingPrice = 3.4M, Category = new Category("Voce") });
-            products.Add(new Product { Id = 3, Name = "Milka mlijecna", Quantity = 20.0M, Barkod = "223456", UnitOfMeasure = "Kom", PurchasePrice = 1.0M, SellingPrice = 1.4M, Category = new Category("Cokolada") });
-            products.Add(new Product { Id = 4, Name = "Najljepse zelje", Quantity = 20.0M, Barkod = "2235456", UnitOfMeasure = "Kom", PurchasePrice = 0.90M, SellingPrice = 1.25M, Category = new Category("Cokolada") });
-            productGrid.DataContext = products;
-            
         }
 
-        private void addButton_Click(object sender, RoutedEventArgs e)
+        private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            new AddProductWindow().ShowDialog();
+            InitializeAsync();
         }
 
-        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        private async void addButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new AddProductWindow(productViewModel.Categories);
+            dialog.ShowDialog();
+            if (dialog.Product == null)
+                return;
+             try
+             {
+                await productViewModel.Insert(dialog.Product);
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+             }
+        }
+
+        private async void deleteButton_Click(object sender, RoutedEventArgs e)
         {
             var selected = (Product)productGrid.SelectedValue;
             if (selected != null)
             {
                 var Result = MessageBox.Show("Are you sure you want to delete the product?", "Delete product?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (Result == MessageBoxResult.Yes)
-                    products.Remove(selected);
+                {
+                    try
+                    {
+                        await productViewModel.Delete(selected);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
+                }
+                productGrid.UnselectAll();
+
             }
         }
 
-        private void updateButton_Click(object sender, RoutedEventArgs e)
+        private async void updateButton_Click(object sender, RoutedEventArgs e)
         {
             var selected = (Product)productGrid.SelectedValue;
             if (selected != null)
             {
-                var updateWindows = new AddProductWindow(selected);
+                var updateWindows = new AddProductWindow(productViewModel.Categories,selected);
                 updateWindows.ShowDialog();
                 productGrid.UnselectAll();
+                var updated = updateWindows.Product;
+                if (updated != null)
+                {
+                    try
+                    {
+                        await this.productViewModel.Update(updated);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
             }
-
-
+           
         }
+
+        private async Task InitializeAsync()
+        {
+            try
+            {
+                await productViewModel.FindAllCategories();
+                await productViewModel.FindAll();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+             this.DataContext = productViewModel;
+        }
+
+       
     }
 }

@@ -37,13 +37,13 @@
                 <ColumnDefinition Width="2.5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <DataGrid  x:Name="currProductGrid" VerticalScrollBarVisibility="Auto" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding}" AutoGenerateColumns="False" AlternatingRowBackground="#FFD099">
+            <DataGrid  x:Name="currProductGrid" VerticalScrollBarVisibility="Auto" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding}" AutoGenerateColumns="False" AlternatingRowBackground="{DynamicResource Secondary}">
                 <DataGrid.Resources>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="FontWeight" Value="Bold" />
                         <Setter Property="FontSize" Value="16"/>
                         <Setter Property="Height" Value="30" />
-                        <Setter Property="Background" Value="#FFF1752E"></Setter>
+                        <Setter Property="Background" Value="{DynamicResource Primary}"></Setter>
                         <Setter Property="Foreground" Value="White"></Setter>
                     </Style>
 
@@ -66,13 +66,13 @@
                 </StackPanel>
             </Button>
 
-            <DataGrid Grid.Column="2" x:Name="procurementGrid" VerticalScrollBarVisibility="Auto" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding}" AutoGenerateColumns="False" AlternatingRowBackground="#FFD099">
+            <DataGrid Grid.Column="2" x:Name="procurementGrid" VerticalScrollBarVisibility="Auto" IsReadOnly="True" CanUserResizeColumns="False" CanUserReorderColumns="False" ItemsSource="{Binding}" AutoGenerateColumns="False" AlternatingRowBackground="{DynamicResource Secondary}">
                 <DataGrid.Resources>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="FontWeight" Value="Bold" />
                         <Setter Property="FontSize" Value="16"/>
                         <Setter Property="Height" Value="30" />
-                        <Setter Property="Background" Value="#FFF1752E"></Setter>
+                        <Setter Property="Background" Value="{DynamicResource Primary}"></Setter>
                         <Setter Property="Foreground" Value="White"></Setter>
                     </Style>
 

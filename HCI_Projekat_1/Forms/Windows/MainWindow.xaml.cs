@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HCI_Projekat_1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace HCI_Projekat_1
         public MainWindow()
         {
             InitializeComponent();
+            new ShopManagementContext().Database.EnsureCreatedAsync();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
