@@ -11,26 +11,26 @@ using System.Threading.Tasks;
 
 namespace HCI_Projekat_1.ViewModel
 {
-    internal class CategoryViewModel : INotifyPropertyChanged
+    internal class SupplierViewModel:INotifyPropertyChanged
     {
-        private CategoryService service = new CategoryService();
-        private List<Category> categories;
-        private ObservableCollection<Category> data;
-        public ObservableCollection<Category> Data { get { return this.data; } set { data = value; OnPropertyChanged(); } }
+        private SupplierService service = new SupplierService();
+        private List<Supplier> suppliers;
+        private ObservableCollection<Supplier> data;
+        public ObservableCollection<Supplier> Data { get { return this.data; } set { data = value; OnPropertyChanged(); } }
         private String searchFilter = "";
         public String SearchFilter { get { return searchFilter; } set { this.searchFilter = value; FindAllByFilter(); } }
 
         public async Task FindAll()
         {
-            List<Category> result = new List<Category>();
+            List<Supplier> result = new List<Supplier>();
             try
             {
                 result = await service.FindAll();
             }
             finally
             {
-                this.categories = result;
-                Data = new ObservableCollection<Category>(result);
+                this.suppliers = result;
+                Data = new ObservableCollection<Supplier>(result);
             }
         }
 
@@ -38,37 +38,37 @@ namespace HCI_Projekat_1.ViewModel
         {
             if (String.IsNullOrEmpty(SearchFilter))
             {
-                Data = new ObservableCollection<Category>(categories);
+                Data = new ObservableCollection<Supplier>(suppliers);
                 return;
             }
-            var query = categories.AsQueryable();
+            var query = suppliers.AsQueryable();
             if (!String.IsNullOrEmpty(SearchFilter))
                 query = query.Where((el) => el.Name.ToUpper().StartsWith(SearchFilter.ToUpper()));
-            Data = new ObservableCollection<Category>(query.ToList());
+            Data = new ObservableCollection<Supplier>(query.ToList());
         }
 
-        public async Task Delete(Category category)
+        public async Task Delete(Supplier supplier)
         {
-            await this.service.Delete(category);
-            categories.Remove(category);
-            if (Data.Contains(category))
-                Data.Remove(category);
+            await this.service.Delete(supplier);
+            suppliers.Remove(supplier);
+            if (Data.Contains(supplier))
+                Data.Remove(supplier);
         }
 
-        public async Task Update(Category category)
+        public async Task Update(Supplier supplier)
         {
-            var result = await this.service.Update(category);
-            int index = this.categories.IndexOf(category);
+            var result = await this.service.Update(supplier);
+            int index = this.suppliers.IndexOf(supplier);
             if (index != -1)
-                this.categories[index] = result;
+                this.suppliers[index] = result;
             this.FindAllByFilter();
 
         }
 
-        public async Task Insert(Category category)
+        public async Task Insert(Supplier supplier)
         {
-            await this.service.Insert(category);
-            this.categories.Add(category);
+            await this.service.Insert(supplier);
+            this.suppliers.Add(supplier);
             this.FindAllByFilter();//trigerujemo azuriranje view iz view modela
         }
 

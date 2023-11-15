@@ -26,8 +26,8 @@ public partial class Category : IEquatable<Category>
 
     public bool Equals(Category other)
     {
-        if(other == null) return false;
+        if (other == null) return false;
         return Id.Equals(other.Id);
     }
-    
+
 }

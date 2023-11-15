@@ -34,33 +34,33 @@ namespace HCI_Projekat_1.Services
                     product.Name = request.Name;
                 if (request.Quantity > 0)
                     product.Quantity = request.Quantity;
-                if(!string.IsNullOrEmpty(request.Barkod))
-                    product.Barkod=request.Barkod;
-                if(request.CategoryId > 0)
+                if (!string.IsNullOrEmpty(request.Barkod))
+                    product.Barkod = request.Barkod;
+                if (request.CategoryId > 0)
                     product.CategoryId = request.CategoryId;
-                if(!string.IsNullOrEmpty(request.UnitOfMeasure))
-                    product.UnitOfMeasure=request.UnitOfMeasure;
-                if(request.PurchasePrice > 0)
+                if (!string.IsNullOrEmpty(request.UnitOfMeasure))
+                    product.UnitOfMeasure = request.UnitOfMeasure;
+                if (request.PurchasePrice > 0)
                     product.PurchasePrice = request.PurchasePrice;
-                if(request.SellingPrice > 0)
+                if (request.SellingPrice > 0)
                     product.SellingPrice = request.SellingPrice;
                 await dbContext.SaveChangesAsync();
             }
         }
 
-            public async Task Insert(Product product)
+        public async Task Insert(Product product)
+        {
+
+            var tmp = product.Category;
+            product.Category = null;
+            product.CategoryId = tmp.Id;
+            using (var dbContext = new ShopManagementContext())
             {
+                await dbContext.Product.AddAsync(product);
+                await dbContext.SaveChangesAsync();
+                product.Category = tmp;
 
-                var tmp = product.Category;
-                product.Category = null;
-                product.CategoryId = tmp.Id;
-                using (var dbContext = new ShopManagementContext())
-                {
-                    await dbContext.Product.AddAsync(product);
-                    await dbContext.SaveChangesAsync();
-                    product.Category = tmp;
-
-                }
             }
         }
     }
+}

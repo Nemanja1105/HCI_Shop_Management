@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HCI_Projekat_1.Models;
 
-public partial class Supplier
+public partial class Supplier:IEquatable<Supplier>
 {
     public Supplier() { }
 
@@ -31,4 +31,15 @@ public partial class Supplier
     public string Address { get; set; }
 
     public virtual ICollection<Procurement> Procurement { get; set; } = new List<Procurement>();
+
+    public bool Equals(Supplier other)
+    {
+        if (other == null) return false;
+        return Id.Equals(other.Id);
+    }
+
+    public override int GetHashCode()
+    {
+        return Id.GetHashCode();
+    }
 }

@@ -44,7 +44,7 @@ namespace HCI_Projekat_1.Forms.Windows
 
         private void addUpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(this.Category.Name))
+            if (string.IsNullOrEmpty((string)this.Category.Name))
             {
                 MessageBox.Show("Sva polja forme moraju biti validno popunjena", "Greska pri unosu", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;

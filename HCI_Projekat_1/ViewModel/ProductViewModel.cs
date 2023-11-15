@@ -19,7 +19,7 @@ namespace HCI_Projekat_1.ViewModel
         private List<Product> products;
         private ObservableCollection<Product> data;
         public ObservableCollection<Product> Data { get { return this.data; } set { data = value; OnPropertyChanged(); } }
-        public List<Category> Categories { get; set; }=new List<Category>();
+        public List<Category> Categories { get; set; } = new List<Category>();
 
         private Category categoryFilter = new Category("All");
         private String searchFilter = "";
@@ -56,47 +56,47 @@ namespace HCI_Projekat_1.ViewModel
 
 
 
-          public void FindAllByFilter()
-           {
-               if (CategoryFilter.Name=="All" && String.IsNullOrEmpty(SearchFilter))
-               {
-                   Data = new ObservableCollection<Product>(products);
-                   return;
-               }
-               var query = products.AsQueryable();
-               if (!String.IsNullOrEmpty(SearchFilter))
-                   query = query.Where((el) => el.Name.ToUpper().StartsWith(SearchFilter.ToUpper()));
-               if (CategoryFilter.Name != "All")
-               {
-                   query = query.Where((el) => el.Category.Name == CategoryFilter.Name);
-               }
-               Data = new ObservableCollection<Product>(query.ToList());
-           }
+        public void FindAllByFilter()
+        {
+            if (CategoryFilter.Name == "All" && String.IsNullOrEmpty(SearchFilter))
+            {
+                Data = new ObservableCollection<Product>(products);
+                return;
+            }
+            var query = products.AsQueryable();
+            if (!String.IsNullOrEmpty(SearchFilter))
+                query = query.Where((el) => el.Name.ToUpper().StartsWith(SearchFilter.ToUpper()));
+            if (CategoryFilter.Name != "All")
+            {
+                query = query.Where((el) => el.Category.Name == CategoryFilter.Name);
+            }
+            Data = new ObservableCollection<Product>(query.ToList());
+        }
 
-         public async Task Delete(Product product)
-           {
-               await this.service.Delete(product);
-               products.Remove(product);
-               if (Data.Contains(product))
-                   Data.Remove(product);
-           }
-        
-           public async Task Update(Product product)
-           {
-               await this.service.Update(product);
-               int index = this.products.IndexOf(product);
-               if (index != -1)
-                   this.products[index] = product;
-               this.FindAllByFilter();
+        public async Task Delete(Product product)
+        {
+            await this.service.Delete(product);
+            products.Remove(product);
+            if (Data.Contains(product))
+                Data.Remove(product);
+        }
 
-           }
+        public async Task Update(Product product)
+        {
+            await this.service.Update(product);
+            int index = this.products.IndexOf(product);
+            if (index != -1)
+                this.products[index] = product;
+            this.FindAllByFilter();
 
-           public async Task Insert(Product product)
-           {
-               await this.service.Insert(product);
-               this.products.Add(product);
-               this.FindAllByFilter();//trigerujemo azuriranje view iz view modela
-           }
+        }
+
+        public async Task Insert(Product product)
+        {
+            await this.service.Insert(product);
+            this.products.Add(product);
+            this.FindAllByFilter();//trigerujemo azuriranje view iz view modela
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

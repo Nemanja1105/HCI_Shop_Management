@@ -4,7 +4,7 @@ using System.Xml.Linq;
 
 namespace HCI_Projekat_1.Models;
 
-public partial class Product:IEquatable<Product>
+public partial class Product : IEquatable<Product>
 {
     public Product() { }
 
@@ -34,15 +34,15 @@ public partial class Product:IEquatable<Product>
     public Product(Product product)
     {
         Id = product.Id;
-        Name =product.Name;
+        Name = product.Name;
         Quantity = product.Quantity;
         Barkod = product.Barkod;
         CategoryId = product.CategoryId;
         UnitOfMeasure = product.UnitOfMeasure;
         PurchasePrice = product.PurchasePrice;
         SellingPrice = product.SellingPrice;
-        Billitem=product.Billitem;
-        Category=product.Category;
+        Billitem = product.Billitem;
+        Category = product.Category;
         Procurementitem = product.Procurementitem;
     }
 
