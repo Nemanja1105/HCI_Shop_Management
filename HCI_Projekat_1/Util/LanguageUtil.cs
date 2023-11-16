@@ -1,6 +1,5 @@
 ﻿using HCI_Projekat_1.Models;
 using System;
-using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -11,38 +10,37 @@ using System.Windows;
 
 namespace HCI_Projekat_1.Util
 {
-    class ThemeUtil
-    {
-        private static readonly String PATH = "Themes";
+    internal class LanguageUtil
+    { 
 
-        public static List<Theme> GetThemes()
+        public static List<Language> GetLanguages()
         {
             string executablePath = AppDomain.CurrentDomain.BaseDirectory;
             string projectPath = Path.GetFullPath(Path.Combine(executablePath, @"..\..\.."));
-            string themesFolderPath = Path.Combine(projectPath, "Themes");
+            string themesFolderPath = Path.Combine(projectPath, "Languages");
             var files = Directory.GetFiles(themesFolderPath);
-            var list = new List<Theme>();
+            var list = new List<Language>();
             foreach (var file in files)
             {
                 var name = Path.GetFileNameWithoutExtension(file);
-                Theme theme = new Theme { Name = name, Path = file };
+                Language theme = new Language { Name = name, Path = file };
                 list.Add(theme);
             }
             return list;
         }
 
-        public static void ChangeTheme(String uri)
+        public static void ChangeLanguage(Language language)
         {
-            var theme= GetThemes();
-           var result= theme.FirstOrDefault(theme=>theme.Name == uri);
-            ResourceDictionary resourceDictionary = new ResourceDictionary { Source=new Uri(result.Path) };
+            ResourceDictionary resourceDictionary = new ResourceDictionary { Source = new Uri(language.Path) };
             foreach (DictionaryEntry entry in resourceDictionary)
                 App.Current.Resources[entry.Key] = entry.Value;
         }
 
-        public static void ChangeTheme(Uri uri)
+        public static void ChangeLanguage(String uri)
         {
-            ResourceDictionary resourceDictionary = new ResourceDictionary { Source = uri };
+            var languages = GetLanguages();
+            var result = languages.FirstOrDefault(lng => lng.Name == uri);
+            ResourceDictionary resourceDictionary = new ResourceDictionary { Source = new Uri(result.Path) };
             foreach (DictionaryEntry entry in resourceDictionary)
                 App.Current.Resources[entry.Key] = entry.Value;
         }

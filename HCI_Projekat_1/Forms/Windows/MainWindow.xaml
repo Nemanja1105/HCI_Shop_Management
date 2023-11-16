@@ -23,12 +23,12 @@
             <StackPanel Orientation="Horizontal" Margin="30,5,0,0">
                 <Image Source="/Images/username.png" Width="24" Height="24"></Image>
                 <Label FontFamily="Segoe UI" FontWeight="Bold" FontSize="16" Margin="0,0,10,0">Username</Label>
-                <TextBox Width="170" Height="23"></TextBox>
+                <TextBox Width="170" Height="23" Text="{Binding LoginDTO.Username}"></TextBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="30,10,0,0">
                 <Image Source="/Images/password.png" Width="24" Height="24"></Image>
                 <Label FontFamily="Segoe UI" FontWeight="Bold" FontSize="16" Margin="0,0,15,0">Password</Label>
-                <PasswordBox Width="170" Height="23"></PasswordBox>
+                <PasswordBox Name="passwordBox" Width="170" Height="23"></PasswordBox>
             </StackPanel>
             <Button  Style="{StaticResource RoundButton}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="120" Margin="0,15,40,0" Height="35" Click="Button_Click">
                 Login

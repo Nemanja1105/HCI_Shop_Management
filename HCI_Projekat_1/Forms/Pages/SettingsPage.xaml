@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
                  d:DesignHeight="634" d:DesignWidth="985"
 d:MinHeight="634" d:MinWidth="985"
-      Title="SettingsPage">
+      Title="SettingsPage" Loaded="Page_Loaded">
 
     <Grid Background="White">
         <Grid.RowDefinitions>
@@ -42,17 +42,17 @@ d:MinHeight="634" d:MinWidth="985"
                     <Label Margin="5 0 0 0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold">My profile</Label>
                 </StackPanel>
 
-                <Label Grid.Row="1" Grid.Column="0" Margin="20 0 0 0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold">Username:</Label>
-                <local:PlaceholderTextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Width="250" FontSize="16" Placeholder="Enter username" Margin="10 0 0 0" HorizontalAlignment="Left"></local:PlaceholderTextBox>
+                <!-- <Label Grid.Row="1" Grid.Column="0" Margin="20 0 0 0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold">Username:</Label>-->
+                <!-- <local:PlaceholderTextBox Grid.Column="1" Grid.Row="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Width="250" FontSize="16" Placeholder="Enter username" Margin="10 0 0 0" HorizontalAlignment="Left"></local:PlaceholderTextBox>  -->
 
 
-                <Label Margin="20 0 0 0" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold">Old Password:</Label>
-                <local:PlaceholderTextBox Grid.Column="1" Grid.Row="2" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Width="250" FontSize="16" Placeholder="Enter Old Password" Margin="10 0 0 0" HorizontalAlignment="Left"></local:PlaceholderTextBox>
+                <Label Margin="20 0 0 0" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold">Old Password:</Label>
+                <PasswordBox x:Name="oldPasswordBox" Grid.Column="1" Grid.Row="1" Height="25" Width="250" FontSize="16"  Margin="10 0 0 0" HorizontalAlignment="Left"></PasswordBox>
 
-                <Label Margin="20 0 0 0" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold">New Password:</Label>
-                <local:PlaceholderTextBox Grid.Column="1" Grid.Row="3" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Width="250" FontSize="16" Placeholder="Enter New Password" Margin="10 0 0 0" HorizontalAlignment="Left"></local:PlaceholderTextBox>
+                <Label Margin="20 0 0 0" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="16" FontWeight="Bold">New Password:</Label>
+                <PasswordBox Name="newPasswordBox" Grid.Column="1" Grid.Row="2"  Height="25" Width="250" FontSize="16"  Margin="10 0 0 0" HorizontalAlignment="Left"></PasswordBox>
 
-                <Button Grid.Column="1" Grid.Row="4" Style="{StaticResource RoundButton}" Width="90" Height="30" HorizontalAlignment="Left" Margin="10 0 0 0">
+                <Button Grid.Column="1" Grid.Row="3" Style="{StaticResource RoundButton}" Width="90" Height="30" Name="updatePasswordButton" HorizontalAlignment="Left" Margin="10 0 0 0" Click="updatePasswordButton_Click">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Update" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                         <Image Source="/Images/update.png" Width="20" Height="20" VerticalAlignment="Center" />
@@ -74,7 +74,7 @@ d:MinHeight="634" d:MinWidth="985"
                 </StackPanel>
 
                 <Label Margin="20 0 0 0" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold">Theme:</Label>
-                <ComboBox Name="themeCombo"  Grid.Row="1" Grid.Column="1" Height="28" Width="250" ItemsSource="{Binding}" DisplayMemberPath="Name" VerticalAlignment="Top" FontSize="16" Margin="10 0 0 0" SelectedValue="{Binding Supplier}" HorizontalAlignment="Left" SelectionChanged="themeCombo_SelectionChanged">
+                <ComboBox Name="themeCombo"  Grid.Row="1" Grid.Column="1" Height="28" Width="250" ItemsSource="{Binding Themes}" DisplayMemberPath="Name" VerticalAlignment="Top" FontSize="16" Margin="10 0 0 0" SelectedValue="{Binding Theme}" HorizontalAlignment="Left" SelectionChanged="themeCombo_SelectionChanged">
 
                 </ComboBox>
             </Grid>
@@ -93,7 +93,7 @@ d:MinHeight="634" d:MinWidth="985"
                 </StackPanel>
 
                 <Label Margin="20 0 0 0" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold">Language:</Label>
-                <ComboBox Name="languageCombo"  Grid.Row="1" Grid.Column="1" Height="28" Width="250" ItemsSource="{Binding}" VerticalAlignment="Top" FontSize="16" Margin="10 0 0 0" SelectedValue="{Binding Supplier}" HorizontalAlignment="Left">
+                <ComboBox Name="languageCombo"  Grid.Row="1" Grid.Column="1" Height="28" Width="250" ItemsSource="{Binding Languages}" DisplayMemberPath="Name"  VerticalAlignment="Top" FontSize="16" Margin="10 0 0 0" SelectedValue="{Binding Language}" HorizontalAlignment="Left" SelectionChanged="language_SelectionChanged">
 
                 </ComboBox>
             </Grid>

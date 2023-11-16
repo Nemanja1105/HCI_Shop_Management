@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HCI_Projekat_1.Models;
+using HCI_Projekat_1.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,15 @@ namespace HCI_Projekat_1
     /// </summary>
     public partial class ManagerMain : Window
     {
-        public ManagerMain()
+        internal static Employee Employee { get; set; }
+        public ManagerMain(Employee employee)
         {
             InitializeComponent();
+            if(employee.Theme!="OrangeTheme")
+                ThemeUtil.ChangeTheme(employee.Theme);
+            if (employee.Language != "SerbianLanguage")
+                LanguageUtil.ChangeLanguage(employee.Language);
+            Employee = employee;
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -35,6 +43,13 @@ namespace HCI_Projekat_1
                     mainFrame.Navigate(pageUri);
                 }
             }
+        }
+
+        private void ListViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+            MainWindow loginWindow = new MainWindow();
+            loginWindow.Show();
+            this.Close();
         }
     }
 }

@@ -1,5 +1,7 @@
-﻿using HCI_Projekat_1.Models;
+﻿using HCI_Projekat_1.Exceptions;
+using HCI_Projekat_1.Models;
 using HCI_Projekat_1.Util;
+using HCI_Projekat_1.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,18 +25,71 @@ namespace HCI_Projekat_1.Forms.Pages
     public partial class SettingsPage : Page
     {
 
-        private List<Theme> themes;
+        private SettingsViewModel settingsViewModel = new SettingsViewModel(ManagerMain.Employee);
+        private bool loaded = false;
         public SettingsPage()
         {
             InitializeComponent();
-            themes=ThemeUtil.GetThemes();
-            themeCombo.DataContext=themes;
+            this.DataContext = settingsViewModel;
         }
 
-        private void themeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void themeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var theme=themeCombo.SelectedItem as Theme;
-            ThemeUtil.ChangeTheme(new Uri(theme.Path));
+            if (loaded)
+            {
+                try
+                {
+                    await this.settingsViewModel.ChangeTheme();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private async void language_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (loaded)
+            {
+                try
+                {
+                    await this.settingsViewModel.ChangeLanguage();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.loaded = true;
+        }
+
+        private async void updatePasswordButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(oldPasswordBox.Password) || string.IsNullOrEmpty(newPasswordBox.Password))
+            {
+                MessageBox.Show("Sva polja forme moraju biti validno popunjena", "Greska pri unosu", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            try
+            {
+                await this.settingsViewModel.ChangePassword(oldPasswordBox.Password, newPasswordBox.Password);
+                MessageBox.Show("Lozinka uspjesno promjenjena", "Operacija uspjesna", MessageBoxButton.OK, MessageBoxImage.Information);
+                oldPasswordBox.Clear();
+                newPasswordBox.Clear();
+            }
+            catch(PasswordMismatchException ex)
+            {
+                MessageBox.Show("Lozinke se ne poklapaju. Pokusajte ponovo", "Izmjena lozinke neuspjesna", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

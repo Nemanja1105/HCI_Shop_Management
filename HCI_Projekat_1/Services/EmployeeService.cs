@@ -1,4 +1,5 @@
-﻿using HCI_Projekat_1.Models;
+﻿using HCI_Projekat_1.Exceptions;
+using HCI_Projekat_1.Models;
 using Microsoft.EntityFrameworkCore;
 using MySqlX.XDevAPI.Common;
 using Org.BouncyCastle.Pkcs;
@@ -14,7 +15,7 @@ namespace HCI_Projekat_1.Services
     internal class EmployeeService
     {
         private readonly string DEFAULT_THEME = "OrangeTheme";
-        private readonly string DEFAULT_LANGUAGE = "Serbian";
+        private readonly string DEFAULT_LANGUAGE = "SerbianLanguage";
 
         public async Task<List<Employee>> FindAll()
         {
@@ -46,6 +47,10 @@ namespace HCI_Projekat_1.Services
                     employee.Adresa = request.Adresa;
                 if(!string.IsNullOrEmpty (request.PhoneNumber))
                     employee.PhoneNumber = request.PhoneNumber;
+                if(!string.IsNullOrEmpty(request.Theme))
+                    employee.Theme = request.Theme;
+                if (!string.IsNullOrEmpty(request.Language))
+                    employee.Language = request.Language;
                 await dbContext.SaveChangesAsync();
             }
         }
@@ -59,6 +64,27 @@ namespace HCI_Projekat_1.Services
             {
                 await dbContext.Employee.AddAsync(employee);
                 await dbContext.SaveChangesAsync();
+            }
+        }
+
+        public Employee Login(LoginDTO loginDTO)
+        {
+            loginDTO.Password=GetSha512Hash(loginDTO.Password);
+            using (var dbContext=new ShopManagementContext()){
+                var employee = dbContext.Employee.FirstOrDefault(e=>e.Username == loginDTO.Username && e.Password==loginDTO.Password);
+                return employee;
+            }
+        }
+
+        public async Task ChangePassword(String oldPassword,String newPassword,int id)
+        {
+            using (var dbContext = new ShopManagementContext())
+            {
+                var employee = await dbContext.Employee.FirstOrDefaultAsync(e => e.Id==id);
+                if (employee.Password != GetSha512Hash(oldPassword))
+                    throw new PasswordMismatchException();
+                employee.Password = GetSha512Hash(newPassword);
+               await dbContext.SaveChangesAsync();   
             }
         }
 
