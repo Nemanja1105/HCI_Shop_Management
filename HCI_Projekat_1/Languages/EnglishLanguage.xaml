@@ -4,6 +4,7 @@
     <system:String x:Key="Add">Add</system:String>
     <system:String x:Key="Delete">Delete</system:String>
     <system:String x:Key="Update">Update</system:String>
+    <system:String x:Key="Cancel">Cancel</system:String>
     <system:String x:Key="Users">Users</system:String>
     <system:String x:Key="Products">Products</system:String>
     <system:String x:Key="Bills">Bills</system:String>
@@ -12,5 +13,32 @@
     <system:String x:Key="Categories">Categories</system:String>
     <system:String x:Key="Settings">Settings</system:String>
     <system:String x:Key="Logout">Logout</system:String>
-
+    <system:String x:Key="AccountType">Account type:</system:String>
+    <system:String x:Key="SearchByName">Search by name</system:String>
+    <system:String x:Key="AddUser">Add user</system:String>
+    <system:String x:Key="DeleteUser">Delete user</system:String>
+    <system:String x:Key="Updateser">Update user</system:String>
+    <system:String x:Key="Name">Name</system:String>
+    <system:String x:Key="Surname">Surname</system:String>
+    <system:String x:Key="JMBG">OIB</system:String>
+    <system:String x:Key="Address">Address</system:String>
+    <system:String x:Key="PhoneNumber">Phone number</system:String>
+    <system:String x:Key="Username">Username</system:String>
+    <system:String x:Key="Password">Password</system:String>
+    <system:String x:Key="RepeatPassword">Repeat password</system:String>
+    <system:String x:Key="Role">Role</system:String>
+    <system:String x:Key="Worker">Worker</system:String>
+    <system:String x:Key="Manager">Manager</system:String>
+    <system:String x:Key="All">All</system:String>
+    <system:String x:Key="DbExceptionMain">An error occurred when communicating with the database</system:String>
+    <system:String x:Key="DbExceptionMessage">Communication error</system:String>
+    <system:String x:Key="DeleteUserQues">Are you sure you want to delete the user?</system:String>
+    <system:String x:Key="EnterUsername">Enter username</system:String>
+    <system:String x:Key="EnterPassword">Enter password</system:String>
+    <system:String x:Key="EnterRepPassword">Enter password</system:String>
+    <system:String x:Key="EnterName">Enter name</system:String>
+    <system:String x:Key="EnterSurname">Enter surname</system:String>
+    <system:String x:Key="EnterJMBG">Enter OIB</system:String>
+    <system:String x:Key="EnterAddress">Enter address</system:String>
+    <system:String x:Key="EnterPhoneNumber">Enter phone number</system:String>
 </ResourceDictionary>

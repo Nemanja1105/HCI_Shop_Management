@@ -1,6 +1,7 @@
 ﻿using HCI_Projekat_1.Forms.Windows;
 using HCI_Projekat_1.Models;
 using HCI_Projekat_1.Models.Enums;
+using HCI_Projekat_1.Util;
 using HCI_Projekat_1.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,17 @@ namespace HCI_Projekat_1.Forms.Pages
         public UserPage()
         {
             InitializeComponent();
-            userTypeCombo.ItemsSource = userTypes;
+            initUserCombo();
+        }
+
+        private void initUserCombo()
+        {
+            var map=new Dictionary<UserType,string>();
+            foreach (var userType in userTypes)
+            {
+                map.Add(userType, LanguageUtil.GetTranslation(userType.ToString()));
+            }
+            userTypeCombo.ItemsSource = map;
         }
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
@@ -47,7 +58,7 @@ namespace HCI_Projekat_1.Forms.Pages
             }
             catch (Exception e)
             {
-                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
             this.DataContext = employeeViewModel;
         }
@@ -66,7 +77,7 @@ namespace HCI_Projekat_1.Forms.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -88,7 +99,7 @@ namespace HCI_Projekat_1.Forms.Pages
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
@@ -101,7 +112,7 @@ namespace HCI_Projekat_1.Forms.Pages
             var selected = (Employee)userGrid.SelectedValue;
             if (selected != null)
             {
-                var Result = MessageBox.Show("Are you sure you want to delete the user?", "Delete user?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var Result = MessageBox.Show(LanguageUtil.GetTranslation("DeleteUserQues"), LanguageUtil.GetTranslation("DeleteUser"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (Result == MessageBoxResult.Yes)
                 {
                     try
@@ -111,7 +122,7 @@ namespace HCI_Projekat_1.Forms.Pages
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 userGrid.UnselectAll();

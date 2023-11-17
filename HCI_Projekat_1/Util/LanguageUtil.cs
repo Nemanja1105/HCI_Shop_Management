@@ -13,6 +13,8 @@ namespace HCI_Projekat_1.Util
     internal class LanguageUtil
     { 
 
+        public static String CurrentLanguage { get; set; }
+
         public static List<Language> GetLanguages()
         {
             string executablePath = AppDomain.CurrentDomain.BaseDirectory;
@@ -27,6 +29,11 @@ namespace HCI_Projekat_1.Util
                 list.Add(theme);
             }
             return list;
+        }
+
+        public static String GetTranslation(String key)
+        {
+            return App.Current.Resources[key] as String;
         }
 
         public static void ChangeLanguage(Language language)

@@ -16,37 +16,37 @@
             <RowDefinition Height="1.5*" />
             <RowDefinition Height="11*" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" Content="Users"/>
+        <Label Grid.Row="0" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" Content="{DynamicResource Users}"/>
         <Grid Grid.Row="1" Margin="20,0,20,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition Height="1.5*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold">Account type:</Label>
+            <Label Grid.Row="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Content="{DynamicResource AccountType}"></Label>
             <StackPanel Grid.Row="1"  Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-                <ComboBox Name="userTypeCombo" ItemsSource="{Binding}" SelectedValue="{Binding UserFilter,UpdateSourceTrigger=PropertyChanged}" MinWidth="120" Height="28" Margin="5 0 0 0" VerticalAlignment="Center" FontSize="16">
+                <ComboBox Name="userTypeCombo"  ItemsSource="{Binding}" SelectedValue="{Binding UserFilter,UpdateSourceTrigger=PropertyChanged}" MinWidth="120" Height="28" Margin="5 0 0 0" VerticalAlignment="Center" FontSize="16" SelectedValuePath="Key" DisplayMemberPath="Value" >
                     
                 </ComboBox>
-                <local:PlaceholderTextBox x:Name="SearchTextBox" Text="{Binding SearchFilter,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PlaceholderTextBoxStyle}" Width="400" Height="28" Margin="10,0,0,0" FontSize="16" Placeholder="Search by name"/>
+                <local:PlaceholderTextBox x:Name="SearchTextBox" Text="{Binding SearchFilter,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource PlaceholderTextBoxStyle}" Width="400" Height="28" Margin="10,0,0,0" FontSize="16" Placeholder="{DynamicResource SearchByName}"/>
                 
 
             </StackPanel>
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Height="30" VerticalAlignment="Top">
-                <Button Style="{StaticResource RoundButton}" Width="90" Click="Button_Click" ToolTip="Add user">
+                <Button Style="{StaticResource RoundButton}" Width="90" Click="Button_Click" ToolTip="{DynamicResource AddUser}">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Add" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                        <TextBlock Text="{DynamicResource Add}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                         <Image Source="/Images/add.png" Width="20" Height="20" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource RoundButton}" Width="90" Margin="10 0 0 0" Name="deleteButton" Click="deleteButton_Click" ToolTip="Delete user">
+                <Button Style="{StaticResource RoundButton}" Width="90" Margin="10 0 0 0" Name="deleteButton" Click="deleteButton_Click" ToolTip="{DynamicResource DeleteUser}">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Delete" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                        <TextBlock Text="{DynamicResource Delete}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                         <Image Source="/Images/delete.png" Width="20" Height="20" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource RoundButton}" Width="90" Margin="10 0 0 0" Name="updateButton" Click="updateButton_Click" ToolTip="Update user" >
+                <Button Style="{StaticResource RoundButton}" Width="90" Margin="10 0 0 0" Name="updateButton" Click="updateButton_Click" ToolTip="{DynamicResource Updateser}" >
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Update" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                        <TextBlock Text="{DynamicResource Update}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                         <Image Source="/Images/update.png" Width="20" Height="20" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
@@ -73,12 +73,12 @@
                 <DataGrid.Columns>
                     
                 <!-- <DataGridTextColumn Header="ID" Width="*" Binding="{Binding Id}" /> -->
-                    <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Surname" Width="*" Binding="{Binding Surname}"/>
-                    <DataGridTextColumn Header="JMB" Width="*" Binding="{Binding Jmb}"/>
-                    <DataGridTextColumn Header="Address" Width="*" Binding="{Binding Adresa}"/>
-                    <DataGridTextColumn Header="Phone number" Width="*" Binding="{Binding PhoneNumber}"/>
-                    <DataGridTextColumn Header="Role" Width="*" Binding="{Binding Uloga, Converter={StaticResource BooleanToRoleConverter}}"/>
+                    <DataGridTextColumn Header="{DynamicResource NameUser}" Width="*" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="{DynamicResource Surname}" Width="*" Binding="{Binding Surname}"/>
+                    <DataGridTextColumn Header="{DynamicResource JMBG}" Width="*" Binding="{Binding Jmb}"/>
+                    <DataGridTextColumn Header="{DynamicResource Address}" Width="*" Binding="{Binding Adresa}"/>
+                    <DataGridTextColumn Header="{DynamicResource PhoneNumber}" Width="*" Binding="{Binding PhoneNumber}"/>
+                    <DataGridTextColumn Header="{DynamicResource Role}" Width="*" Binding="{Binding Uloga, Converter={StaticResource BooleanToRoleConverter}}"/>
                     
                 </DataGrid.Columns>
             </DataGrid>

@@ -29,6 +29,7 @@ namespace HCI_Projekat_1
                 ThemeUtil.ChangeTheme(employee.Theme);
             if (employee.Language != "SerbianLanguage")
                 LanguageUtil.ChangeLanguage(employee.Language);
+            LanguageUtil.CurrentLanguage = employee.Language;
             Employee = employee;
         }
 

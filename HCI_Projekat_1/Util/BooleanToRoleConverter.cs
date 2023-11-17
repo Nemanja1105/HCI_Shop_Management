@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HCI_Projekat_1.Util;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace HCI_Projekat_1
             if (value is bool)
             {
                 bool isManager = (bool)value;
-                return isManager ? "Manager" : "Worker";
+                return isManager ? LanguageUtil.GetTranslation("Manager") : LanguageUtil.GetTranslation("Worker");
             }
             return "Unknown";
         }

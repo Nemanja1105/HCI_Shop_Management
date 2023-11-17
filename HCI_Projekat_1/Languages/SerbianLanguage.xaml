@@ -4,6 +4,7 @@
     <system:String x:Key="Add">Dodaj</system:String>
     <system:String x:Key="Delete">Ukloni</system:String>
     <system:String x:Key="Update">Ažuriraj</system:String>
+    <system:String x:Key="Cancel">Otkaži</system:String>
     <system:String x:Key="Users">Korisnici</system:String>
     <system:String x:Key="Products">Proizvodi</system:String>
     <system:String x:Key="Bills">Računi</system:String>
@@ -12,6 +13,37 @@
     <system:String x:Key="Categories">Kategorije</system:String>
     <system:String x:Key="Settings">Podešavanja</system:String>
     <system:String x:Key="Logout">Odjava</system:String>
+    <system:String x:Key="AccountType">Tip naloga:</system:String>
+    <system:String x:Key="SearchByName">Pretrazi po imenu</system:String>
+    <system:String x:Key="AddUser">Dodaj korisnika</system:String>
+    <system:String x:Key="DeleteUser">Ukloni korisnika</system:String>
+    <system:String x:Key="Updateser">Ažuriraj korisnika</system:String>
+    <system:String x:Key="NameUser">Ime</system:String>
+    <system:String x:Key="Surname">Prezime</system:String>
+    <system:String x:Key="JMBG">JMBG</system:String>
+    <system:String x:Key="Address">Adresa</system:String>
+    <system:String x:Key="PhoneNumber">Broj telefona</system:String>
+    <system:String x:Key="Username">Korisničko ime</system:String>
+    <system:String x:Key="Password">Lozinka</system:String>
+    <system:String x:Key="RepeatPassword">Ponovljena lozinka</system:String>
+    <system:String x:Key="Role">Uloga</system:String>
+    <system:String x:Key="Worker">Radnik</system:String>
+    <system:String x:Key="Manager">Menadzer</system:String>
+    <system:String x:Key="All">Svi</system:String>
+    <system:String x:Key="DbExceptionMain">Desila se greška prilikom komunikacije sa bazom podataka</system:String>
+    <system:String x:Key="DbExceptionMessage">Greška u komunikaciji</system:String>
+    <system:String x:Key="DeleteUserQues">Jeste li sigurni da želite ukloniti korisnika?</system:String>
+    <system:String x:Key="EnterUsername">Unesite korisničko ime</system:String>
+    <system:String x:Key="EnterPassword">Unesite lozinku</system:String>
+    <system:String x:Key="EnterRepPassword">Unesite lozinku</system:String>
+    <system:String x:Key="EnterName">Unesite ime</system:String>
+    <system:String x:Key="EnterSurname">Unesite prezime</system:String>
+    <system:String x:Key="EnterJMBG">Unesite JMBG</system:String>
+    <system:String x:Key="EnterAddress">Unesite adresu</system:String>
+    <system:String x:Key="EnterPhoneNumber">Unesite broj telefona</system:String>
+    
+    
+    
     
     
 

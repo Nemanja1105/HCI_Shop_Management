@@ -1,5 +1,6 @@
 ﻿using HCI_Projekat_1.Models;
 using HCI_Projekat_1.Models.Enums;
+using HCI_Projekat_1.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,18 @@ namespace HCI_Projekat_1.Forms.Windows
         public AddUserWindow()
         {
             InitializeComponent();
-            roleComboBox.DataContext = userTypes;
+            initUserCombo();
+            //roleComboBox.DataContext = userTypes;
+        }
+
+        private void initUserCombo()
+        {
+            var map = new Dictionary<UserType, string>();
+            foreach (var userType in userTypes)
+            {
+                map.Add(userType, LanguageUtil.GetTranslation(userType.ToString()));
+            }
+            roleComboBox.ItemsSource = map;
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
