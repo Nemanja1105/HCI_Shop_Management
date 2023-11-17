@@ -8,6 +8,6 @@ namespace HCI_Projekat_1.Models
 {
     enum PaymentType
     {
-        Cash, Card
+        Cash, Card,All
     }
 }

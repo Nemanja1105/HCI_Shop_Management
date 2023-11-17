@@ -1,4 +1,6 @@
 ﻿using HCI_Projekat_1.Models;
+using HCI_Projekat_1.Services;
+using HCI_Projekat_1.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,19 +23,38 @@ namespace HCI_Projekat_1.Forms.Windows
     public partial class BillDetailsWindow : Window
     {
         private Bill bill;
+        private BillService service = new BillService();
         public BillDetailsWindow(Bill bill)
         {
             InitializeComponent();
             this.bill = bill;
-            this.DataContext = bill;
-            this.billGrid.DataContext = bill.Billitem;
-            cancelGrid.DataContext = bill;
 
         }
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private async Task InitializeAsync()
+        {
+            try
+            {
+             bill.Billitem=  await service.FindAllItemForBill(this.bill);
+             bill.Canceledbill=await service.FindCanceledForBill(this.bill);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            this.DataContext = bill;
+            this.billGrid.DataContext = bill.Billitem;
+            cancelGrid.DataContext = bill;
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+          await  InitializeAsync();
         }
     }
 }

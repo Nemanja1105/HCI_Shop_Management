@@ -1,0 +1,81 @@
+﻿using HCI_Projekat_1.Models;
+using HCI_Projekat_1.Models.Enums;
+using HCI_Projekat_1.Services;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace HCI_Projekat_1.ViewModel
+{
+    internal class BillViewModel:INotifyPropertyChanged
+    {
+        private BillService service = new BillService();
+        private List<Bill> bills;
+        private ObservableCollection<Bill> data;
+        public List<PaymentType> PaymentTypes = Enum.GetValues(typeof(PaymentType)).Cast<PaymentType>().ToList();
+        public ObservableCollection<Bill> Data { get { return this.data; } set { data = value; OnPropertyChanged(); } }
+
+        private PaymentType paymentTypeFilter= PaymentType.All;
+        private DateTime startTime = DateTime.Now;
+        private DateTime toFilter;
+        private DateTime fromFilter;
+
+        public BillViewModel()
+        {
+            this.toFilter = this.fromFilter = startTime;
+        }
+        public DateTime ToFilter { get { return toFilter; } set { toFilter = value; FindAllByFilter(); } }
+        public DateTime FromFilter { get { return fromFilter; } set { fromFilter = value; FindAllByFilter(); } }
+        public PaymentType PaymentType { get { return paymentTypeFilter; } set { paymentTypeFilter = value; FindAllByFilter(); } }
+        
+    
+        public async Task FindAll()
+        {
+            List<Bill> result = new List<Bill>();
+            try
+            {
+                result = await service.FindAll();
+            }
+            finally
+            {
+                this.bills = result;
+                Data = new ObservableCollection<Bill>(result);
+            }
+        }
+
+        public void FindAllByFilter()
+        {
+            if (PaymentType == PaymentType.All && toFilter==startTime && fromFilter==startTime)
+            {
+                Data = new ObservableCollection<Bill>(bills);
+                return;
+            }
+            var query = bills.AsQueryable();
+          
+            if (PaymentType != PaymentType.All)
+            {
+                bool status = PaymentType == PaymentType.Cash ? false : true;
+                query = query.Where((el) => el.PaymentType == status);
+            }
+            if (toFilter != startTime)
+                query = query.Where((el) => el.DateOfIssue < toFilter);
+            if(fromFilter!=startTime)
+                query=query.Where((el) => el.DateOfIssue > fromFilter);
+            Data = new ObservableCollection<Bill>(query.ToList());
+        }
+
+       
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+    }
+}

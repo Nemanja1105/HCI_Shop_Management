@@ -38,8 +38,8 @@ namespace HCI_Projekat_1
                 MessageBox.Show("Sva polja moraju biti validno popunjena","Greska prilikom prijave",MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-           // try
-            //{
+            try
+            {
 
                 var result = loginViewModel.Login();
                 if (result != null)
@@ -49,11 +49,11 @@ namespace HCI_Projekat_1
                 }
                 else
                     MessageBox.Show("Korisnicko ime ili lozinka nisu ispravni", "Pogresni kredencijali", MessageBoxButton.OK, MessageBoxImage.Error);
-          /*  }
+            }
             catch(Exception ex)
             {
                 MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
-            }*/
+            }
         }
     }
 }
