@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Projekat_1"
         mc:Ignorable="d"
-        Title="AddProductToProcurement"  Height="170" Width="370"
-        MinHeight="170" MinWidth="370" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="AddProductToProcurement"  Height="220" Width="370"
+        MinHeight="220" MinWidth="370" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -24,10 +24,14 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="1*"></RowDefinition>
 
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Quantity:</Label>
-            <local:PlaceholderTextBox x:Name="quantityTextBox" PreviewTextInput="TextBox_PreviewTextInput" Grid.Row="0" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Name}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter quantity"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox x:Name="quantityTextBox"  Grid.Row="0" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Text="1,0"></local:PlaceholderTextBox>
+            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Purchase price:</Label>
+            <local:PlaceholderTextBox x:Name="priceTextBox"   Grid.Row="1" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Text="1,0"></local:PlaceholderTextBox>
+
         </Grid>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Height="30">

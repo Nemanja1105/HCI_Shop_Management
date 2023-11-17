@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HCI_Projekat_1.Forms.Windows"
         mc:Ignorable="d"
         Title="ProcurementDetailsWindow" Height="600" Width="750"
-        MinHeight="600" MinWidth="750" WindowStartupLocation="CenterScreen">
+        MinHeight="600" MinWidth="750" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>

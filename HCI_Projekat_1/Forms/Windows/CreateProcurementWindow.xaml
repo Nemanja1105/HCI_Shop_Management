@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Projekat_1.Forms.Windows"
         mc:Ignorable="d"
-        Title="CreateProcurementWindow" Height="600" Width="800"
-        MinHeight="600" MinWidth="800" WindowStartupLocation="CenterScreen">
+        Title="Create Procurement" Height="600" Width="800"
+        MinHeight="600" MinWidth="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -26,7 +26,7 @@
                 <ColumnDefinition Width="1*"></ColumnDefinition>
                 <ColumnDefinition Width="2.5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold">Products</Label>
+            <Label Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold">Products[Current]</Label>
             <Label Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" FontWeight="Bold">Procurement</Label>
         </Grid>
 

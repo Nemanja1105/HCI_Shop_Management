@@ -22,29 +22,18 @@ namespace HCI_Projekat_1.Forms.Windows
     /// </summary>
     public partial class CreateProcurementWindow : Window
     {
-        private List<Product> products = new List<Product>();
-        private ProcurementItemsViewModel procurementViewModel=new ProcurementItemsViewModel();
-        private List<Supplier> suppliers = new List<Supplier>();
+        private ProcurementItemsViewModel procurementViewModel = new ProcurementItemsViewModel();
+        private bool isClosedByButton = false;
+        public Procurement Procurement { get; set; }
         public CreateProcurementWindow()
         {
             InitializeComponent();
-            products.Add(new Product { Id = 1, Name = "Jabuke", Quantity = 8.0M, Barkod = "123456", UnitOfMeasure = UnitOfMeasure.Kg.ToString(), PurchasePrice = 1.4M, SellingPrice = 2.4M, Category = new Category("Voce") });
-            products.Add(new Product { Id = 2, Name = "Kruske", Quantity = 18.0M, Barkod = "12345698", UnitOfMeasure = "Kg", PurchasePrice = 2.4M, SellingPrice = 3.4M, Category = new Category("Voce") });
-            products.Add(new Product { Id = 3, Name = "Milka mlijecna", Quantity = 20.0M, Barkod = "223456", UnitOfMeasure = "Kom", PurchasePrice = 1.0M, SellingPrice = 1.4M, Category = new Category("Cokolada") });
-            products.Add(new Product { Id = 4, Name = "Najljepse zelje", Quantity = 20.0M, Barkod = "2235456", UnitOfMeasure = "Kom", PurchasePrice = 0.90M, SellingPrice = 1.25M, Category = new Category("Cokolada") });
-            suppliers.Add(new Supplier { Id = 1, Name = "Takovo", Address = "Trn 12", PhoneNumber = "056434567" });
-            suppliers.Add(new Supplier { Id = 2, Name = "Podravka", Address = "Zagreg 2", PhoneNumber = "056589667" });
-            suppliers.Add(new Supplier { Id = 3, Name = "Vitaminka", Address = "Banja Luka 12", PhoneNumber = "0214567" });
-            suppliers.Add(new Supplier { Id = 4, Name = "Semberija", Address = "Biljena 45", PhoneNumber = "0559687" });
-            currProductGrid.DataContext = products;
-            procurementGrid.DataContext = procurementViewModel.Procurementitems;
-            totalLabel.DataContext = procurementViewModel;
-            supplierCombo.ItemsSource = suppliers;
-            supplierCombo.DataContext = procurementViewModel.Supplier;
         }
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
         {
+            isClosedByButton = true;
+            Procurement = null;
             this.Close();
         }
 
@@ -55,27 +44,63 @@ namespace HCI_Projekat_1.Forms.Windows
             {
                 var dialog = new AddProductToProcurement();
                 dialog.ShowDialog();
-                if (dialog.Quantity <= 0)
+                currProductGrid.UnselectAll();
+                if (!dialog.Quantity.HasValue || !dialog.Price.HasValue)
                     return;
-                var tmp = procurementViewModel.Procurementitems.FirstOrDefault(item => item.Product.Id == selected.Id);
-                if (tmp == null)
+                procurementViewModel.Insert(selected, dialog.Price.Value, dialog.Quantity.Value);
+
+            }
+            else
+            {
+                var sel2 = (Procurementitem)procurementGrid.SelectedValue;
+                if (sel2 != null)
                 {
-                    var item = new Procurementitem { Price = selected.PurchasePrice, Quantity = dialog.Quantity, Product = selected };
-                    procurementViewModel.Procurementitems.Add(item);
-                    procurementViewModel.TotalPrice += item.TotalPrice;
+                    procurementViewModel.Remove(sel2);
+                    procurementGrid.UnselectAll();
                 }
-                else
-                {
-                    tmp.Quantity += dialog.Quantity;
-                    procurementViewModel.TotalPrice += dialog.Quantity * tmp.Price;
-                }
-                procurementGrid.UnselectAll();
             }
         }
 
         private void createButton_Click(object sender, RoutedEventArgs e)
         {
+            if(procurementViewModel.Supplier==null || procurementViewModel.Procurementitems.Count == 0)
+            {
+                MessageBox.Show("Sva polja forme moraju biti validno popunjena", "Greska pri unosu", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            Procurement = procurementViewModel.CreateProcurement();
+            isClosedByButton = true;
+            this.Close();
+        }
 
+        private async Task InitializeAsync()
+        {
+            try
+            {
+                await this.procurementViewModel.LoadAllData();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            currProductGrid.DataContext = procurementViewModel.Products;
+            procurementGrid.DataContext = procurementViewModel.Procurementitems;
+            totalLabel.DataContext = procurementViewModel;
+            supplierCombo.ItemsSource = procurementViewModel.Suppliers;
+            supplierCombo.DataContext = procurementViewModel;
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            InitializeAsync();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!isClosedByButton)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

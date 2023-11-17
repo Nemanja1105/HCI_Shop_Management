@@ -16,6 +16,12 @@ namespace HCI_Projekat_1.Services
                 return await dbContext.Product.Include(p => p.Category).AsNoTracking().ToListAsync();
         }
 
+        public async Task<List<Product>> FindAllTracked()
+        {
+            using (var dbContext = new ShopManagementContext())
+                return await dbContext.Product.Include(p => p.Category).ToListAsync();
+        }
+
         public async Task Delete(Product product)
         {
             using (var dbContext = new ShopManagementContext())

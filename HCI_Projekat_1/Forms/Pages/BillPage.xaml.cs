@@ -69,7 +69,7 @@ namespace HCI_Projekat_1.Forms.Pages
 
         private async void Page_Loaded_1(object sender, RoutedEventArgs e)
         {
-            InitializeAsync();
+           await InitializeAsync();
         }
     }
 }

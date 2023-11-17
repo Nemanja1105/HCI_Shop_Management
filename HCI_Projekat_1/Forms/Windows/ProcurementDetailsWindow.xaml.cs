@@ -1,4 +1,5 @@
 ﻿using HCI_Projekat_1.Models;
+using HCI_Projekat_1.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,17 +22,35 @@ namespace HCI_Projekat_1.Forms.Windows
     public partial class ProcurementDetailsWindow : Window
     {
         private Procurement procurement;
+        private ProcurementService service=new ProcurementService();
         public ProcurementDetailsWindow(Procurement procurement)
         {
             InitializeComponent();
             this.procurement= procurement;
-            this.DataContext = procurement;
-            this.procurementGrid.DataContext = procurement.Procurementitem;
         }
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            InitializeAsync();
+        }
+
+        private async Task InitializeAsync()
+        {
+            try
+            {
+                procurement.Procurementitem = await service.FindAllItemForProcurement(this.procurement);            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            this.DataContext = procurement;
+            this.procurementGrid.DataContext = procurement.Procurementitem;
+            
         }
     }
 }

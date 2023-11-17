@@ -19,31 +19,48 @@ namespace HCI_Projekat_1.Forms.Windows
     /// </summary>
     public partial class AddProductToProcurement : Window
     {
-        public decimal Quantity { get; set; } = 0;
+        public decimal? Quantity { get; set; } = 1.0m;
+        public decimal? Price { get; set; } = 1.0m;
+
+        bool isClosedByButton = false;
         public AddProductToProcurement()
         {
             InitializeComponent();
+
         }
 
-        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            if (!char.IsDigit(e.Text, e.Text.Length - 1))
-            {
-                e.Handled = true;
-            }
-        }
+       
 
 
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
+            Quantity = Price = null;
+            isClosedByButton = true;
             this.Close();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Quantity = int.Parse(quantityTextBox.Text);
-            this.Close();
+            try
+            {
+                Quantity = decimal.Parse(quantityTextBox.Text);
+                Price = decimal.Parse(priceTextBox.Text);
+                isClosedByButton = true;
+                this.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Cijena i kolicina moraju da budu decimalni brojevi", "Greska u formatu",MessageBoxButton.OK,MessageBoxImage.Error);
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!isClosedByButton)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
