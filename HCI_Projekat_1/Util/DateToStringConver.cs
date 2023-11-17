@@ -14,7 +14,7 @@ namespace HCI_Projekat_1
         {
             if(value is DateTime)
             {
-                return ((DateTime)value).ToString("MM/dd/yyyy HH:mm");
+                return ((DateTime)value).ToString("dd/MM/yyyy HH:mm");
             }
             return "unknown";
         }

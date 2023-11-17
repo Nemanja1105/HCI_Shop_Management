@@ -48,6 +48,7 @@ namespace HCI_Projekat_1.Forms.Pages
             try
             {
                 await billViewModel.FindAll();
+                billViewModel.FindAllByFilter();
             }
             catch (Exception e)
             {

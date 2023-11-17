@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace HCI_Projekat_1.ViewModel
 {
-    internal class BillViewModel:INotifyPropertyChanged
+    internal class BillViewModel : INotifyPropertyChanged
     {
         private BillService service = new BillService();
         private List<Bill> bills;
@@ -20,7 +20,7 @@ namespace HCI_Projekat_1.ViewModel
         public List<PaymentType> PaymentTypes = Enum.GetValues(typeof(PaymentType)).Cast<PaymentType>().ToList();
         public ObservableCollection<Bill> Data { get { return this.data; } set { data = value; OnPropertyChanged(); } }
 
-        private PaymentType paymentTypeFilter= PaymentType.All;
+        private PaymentType paymentTypeFilter = PaymentType.All;
         private DateTime startTime = DateTime.Now;
         private DateTime toFilter;
         private DateTime fromFilter;
@@ -32,8 +32,8 @@ namespace HCI_Projekat_1.ViewModel
         public DateTime ToFilter { get { return toFilter; } set { toFilter = value; FindAllByFilter(); } }
         public DateTime FromFilter { get { return fromFilter; } set { fromFilter = value; FindAllByFilter(); } }
         public PaymentType PaymentType { get { return paymentTypeFilter; } set { paymentTypeFilter = value; FindAllByFilter(); } }
-        
-    
+
+
         public async Task FindAll()
         {
             List<Bill> result = new List<Bill>();
@@ -50,26 +50,18 @@ namespace HCI_Projekat_1.ViewModel
 
         public void FindAllByFilter()
         {
-            if (PaymentType == PaymentType.All && toFilter==startTime && fromFilter==startTime)
-            {
-                Data = new ObservableCollection<Bill>(bills);
-                return;
-            }
             var query = bills.AsQueryable();
-          
             if (PaymentType != PaymentType.All)
             {
                 bool status = PaymentType == PaymentType.Cash ? false : true;
                 query = query.Where((el) => el.PaymentType == status);
             }
-            if (toFilter != startTime)
-                query = query.Where((el) => el.DateOfIssue < toFilter);
-            if(fromFilter!=startTime)
-                query=query.Where((el) => el.DateOfIssue > fromFilter);
+            query = query.Where((el) => el.DateOfIssue.Date <= toFilter.Date);
+            query = query.Where((el) => el.DateOfIssue.Date >= fromFilter.Date);
             Data = new ObservableCollection<Bill>(query.ToList());
         }
 
-       
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

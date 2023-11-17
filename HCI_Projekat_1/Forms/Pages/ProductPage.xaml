@@ -70,7 +70,7 @@
                 </DataGrid.Resources>
                 <DataGrid.Columns>
 
-                    <DataGridTextColumn Header="ID" Width="1*" Binding="{Binding Id}" />
+             <!--       <DataGridTextColumn Header="ID" Width="1*" Binding="{Binding Id}" /> -->
                     <DataGridTextColumn Header="Name" Width="1*" Binding="{Binding Name}"/>
                     <DataGridTextColumn Header="Quantity" Width="1*" Binding="{Binding Quantity}"/>
                     <DataGridTextColumn Header="BarCode" Width="1*" Binding="{Binding Barkod}"/>

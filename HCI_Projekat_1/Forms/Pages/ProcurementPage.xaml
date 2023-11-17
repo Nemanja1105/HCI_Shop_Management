@@ -65,7 +65,7 @@ d:MinHeight="634" d:MinWidth="985"
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID" Width="1*" Binding="{Binding Id}" />
+              <!--      <DataGridTextColumn Header="ID" Width="1*" Binding="{Binding Id}" /> -->
                     <DataGridTextColumn Header="Supplier" Width="1.5*" Binding="{Binding Supplier.Name}"/>
                     <DataGridTextColumn Header="Date Of Acquisition" Width="2*" Binding="{Binding DateOfAcquisition,Converter={StaticResource DateToStringConver}}"/>
                     <DataGridTextColumn Header="Total Price" Width="1.5*" Binding="{Binding TotalPrice}"/>

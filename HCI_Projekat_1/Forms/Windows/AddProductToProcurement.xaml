@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HCI_Projekat_1"
         mc:Ignorable="d"
         Title="AddProductToProcurement"  Height="170" Width="370"
-        MinHeight="170" MinWidth="370" WindowStartupLocation="CenterScreen">
+        MinHeight="170" MinWidth="370" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>

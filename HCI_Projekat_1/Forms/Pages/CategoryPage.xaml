@@ -69,7 +69,7 @@
                 </DataGrid.Resources>
                 <DataGrid.Columns>
 
-                    <DataGridTextColumn Header="ID" Width="1*" Binding="{Binding Id}" />
+                <!--    <DataGridTextColumn Header="ID" Width="1*" Binding="{Binding Id}" /> -->
                     <DataGridTextColumn Header="Name" Width="1*" Binding="{Binding Name}"/>
                     
 

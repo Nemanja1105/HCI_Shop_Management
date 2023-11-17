@@ -70,8 +70,8 @@ d:MinHeight="634" d:MinWidth="985"
                 </DataGrid.Resources>
                 <DataGrid.Columns>
 
-                    <DataGridTextColumn Header="ID" Width="1*" Binding="{Binding Id}" />
-                    <DataGridTextColumn Header="Date Of Issue" Width="2*" Binding="{Binding DateOfIssue}"/>
+                <!--    <DataGridTextColumn Header="ID" Width="1*" Binding="{Binding Id}" />-->
+                    <DataGridTextColumn Header="Date Of Issue" Width="2*" Binding="{Binding DateOfIssue,Converter={StaticResource DateToStringConver}}"/>
                     <DataGridTextColumn Header="Payment Type" Width="1.5*" Binding="{Binding PaymentType,Converter={StaticResource BooleanToPaymentTypeConverter}}"/>
                     <DataGridTextColumn Header="Total Price" Width="1.5*" Binding="{Binding TotalPrice}"/>
                     <DataGridTextColumn Header="Status" Width="1.5*" Binding="{Binding Canceledbill,Converter={StaticResource CollectionToCanceledBillConvertor}}"/>
