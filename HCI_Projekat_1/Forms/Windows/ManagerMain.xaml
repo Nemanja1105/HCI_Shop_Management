@@ -42,37 +42,37 @@
                         </Setter>
                     </Style>
                 </ListView.ItemContainerStyle>
-                <ListViewItem Margin="0 10 0 10" Tag="UserPage">
+                <ListViewItem Margin="0 10 0 10" Tag="UserPage" Name="userItem">
                     <StackPanel HorizontalAlignment="Center">
                         <Image Source="/Images/usersIcon.jpeg" Height="24" Width="24"></Image>
                         <Label Foreground="White" FontWeight="Bold" FontSize="16" Content="{DynamicResource Users}"></Label>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem Tag="ProductPage">
+                <ListViewItem Tag="ProductPage" Name="productItem">
                     <StackPanel HorizontalAlignment="Center" >
                         <Image Source="/Images/products.png" Height="24" Width="24"></Image>
                         <Label Foreground="White" FontWeight="Bold" FontSize="16" Content="{DynamicResource Products}"></Label>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem Tag="BillPage">
+                <ListViewItem Tag="BillPage" Name="billItem">
                     <StackPanel HorizontalAlignment="Center">
                         <Image Source="/Images/bill.png" Height="24" Width="24"></Image>
                         <Label Foreground="White" FontWeight="Bold" FontSize="16" Content="{DynamicResource Bills}"></Label>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem Tag="ProcurementPage">
+                <ListViewItem Tag="ProcurementPage" Name="procurementItem">
                     <StackPanel HorizontalAlignment="Center">
                         <Image Source="/Images/procurement.png" Height="24" Width="24"></Image>
                         <Label Foreground="White" FontWeight="Bold" FontSize="16" Content="{DynamicResource Procurement}"></Label>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem Tag="SupplierPage">
+                <ListViewItem Tag="SupplierPage" Name="supplierItem">
                     <StackPanel HorizontalAlignment="Center">
                         <Image Source="/Images/supplier.png" Height="24" Width="24"></Image>
                         <Label Foreground="White" FontWeight="Bold" FontSize="16" Content="{DynamicResource Suppliers}"></Label>
                     </StackPanel>
                 </ListViewItem>
-                <ListViewItem Tag="CategoryPage">
+                <ListViewItem Tag="CategoryPage" Name="categoryItem">
                     <StackPanel HorizontalAlignment="Center" >
                         <Image Source="/Images/sifarnik.png" Height="24" Width="24"></Image>
                         <Label Foreground="White" FontWeight="Bold" FontSize="16" Content="{DynamicResource Categories}"></Label>

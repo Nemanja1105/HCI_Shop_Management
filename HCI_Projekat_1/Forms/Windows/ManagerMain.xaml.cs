@@ -1,4 +1,5 @@
 ﻿using HCI_Projekat_1.Models;
+using HCI_Projekat_1.Models.Enums;
 using HCI_Projekat_1.Util;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,15 @@ namespace HCI_Projekat_1
                 LanguageUtil.ChangeLanguage(employee.Language);
             LanguageUtil.CurrentLanguage = employee.Language;
             Employee = employee;
+            if (!Employee.Uloga)//radnik
+            {
+                userItem.Visibility = Visibility.Collapsed;
+                productItem.Visibility = Visibility.Collapsed;
+                procurementItem.Visibility = Visibility.Collapsed;
+                supplierItem.Visibility = Visibility.Collapsed;
+                categoryItem.Visibility = Visibility.Collapsed;
+                billItem.Margin = new Thickness(0, 10, 0, 10);
+            }
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

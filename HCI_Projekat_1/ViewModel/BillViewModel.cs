@@ -39,13 +39,25 @@ namespace HCI_Projekat_1.ViewModel
             List<Bill> result = new List<Bill>();
             try
             {
-                result = await service.FindAll();
+                if (ManagerMain.Employee.Uloga)
+                    result = await service.FindAll();
+                else
+                    result = await service.FindAllByEmployyeId(ManagerMain.Employee.Id);
             }
             finally
             {
                 this.bills = result;
                 Data = new ObservableCollection<Bill>(result);
             }
+        }
+
+        public async Task CancelBill(Canceledbill canceledbill)
+        {
+            await this.service.CancelBill(canceledbill);
+            int index = this.bills.IndexOf(canceledbill.Bill);
+            if (index != -1)
+                this.bills[index] = canceledbill.Bill;
+            this.FindAllByFilter();
         }
 
         public void FindAllByFilter()

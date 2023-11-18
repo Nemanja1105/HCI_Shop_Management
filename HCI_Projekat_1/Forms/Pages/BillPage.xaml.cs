@@ -34,6 +34,11 @@ namespace HCI_Projekat_1.Forms.Pages
         {
             InitializeComponent();
             initUserCombo();
+            if(ManagerMain.Employee.Uloga)
+            {
+                cancelButton.Visibility=Visibility.Collapsed;
+                createButton.Visibility=Visibility.Collapsed;
+            }
         }
 
         private void initUserCombo()
@@ -73,6 +78,31 @@ namespace HCI_Projekat_1.Forms.Pages
         private async void Page_Loaded_1(object sender, RoutedEventArgs e)
         {
            await InitializeAsync();
+        }
+
+        private async void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selected = (Bill)billGrid.SelectedValue;
+            if (selected != null)
+            {
+                if (selected.isCanceled)
+                    return;
+                var cancelWindow = new CancelBillWindow(selected);
+                cancelWindow.ShowDialog();
+                billGrid.UnselectAll();
+                var updated = cancelWindow.Canceledbill;
+                if (updated != null)
+                {
+                    try
+                    {
+                        await this.billViewModel.CancelBill(updated);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
         }
     }
 }

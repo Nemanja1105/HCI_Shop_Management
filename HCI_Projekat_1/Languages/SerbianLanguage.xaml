@@ -112,6 +112,10 @@
     <system:String x:Key="Transfer">Prebaci</system:String>
     <system:String x:Key="AddProductToProcurement">Dodaj proizvod u nabavku</system:String>
     <system:String x:Key="PriceQuantityError">Cijena i količina moraju da budu decimalni brojevi</system:String>
+    <system:String x:Key="CancelBill">Storniraj</system:String>
+    <system:String x:Key="CancelBillDet">Storniraj račun</system:String>
+    <system:String x:Key="EnterReason">Unesite razlog</system:String>
+    
 
 
 </ResourceDictionary>

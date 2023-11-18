@@ -7,6 +7,7 @@
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Images\cancelBill.png" />
     <None Remove="Images\createProcurement.png" />
     <None Remove="Images\profile.png" />
     <None Remove="Images\quantity.png" />
@@ -22,6 +23,7 @@
     <Page Remove="Themes\OrangeTheme.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\cancelBill.png" />
     <Resource Include="Images\createProcurement.png" />
     <Resource Include="Images\password.png" />
     <Resource Include="Images\profile.png" />
