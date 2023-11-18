@@ -60,6 +60,13 @@ namespace HCI_Projekat_1.ViewModel
             this.FindAllByFilter();
         }
 
+        public async Task Insert(Bill bill)
+        {
+            var result = await service.Insert(bill);
+            bills.Add(result);
+            FindAllByFilter();
+        }
+
         public void FindAllByFilter()
         {
             var query = bills.AsQueryable();

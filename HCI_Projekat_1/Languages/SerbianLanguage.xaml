@@ -111,11 +111,16 @@
     <system:String x:Key="Procurementt">Nabavka</system:String>
     <system:String x:Key="Transfer">Prebaci</system:String>
     <system:String x:Key="AddProductToProcurement">Dodaj proizvod u nabavku</system:String>
-    <system:String x:Key="PriceQuantityError">Cijena i količina moraju da budu decimalni brojevi</system:String>
+    <system:String x:Key="PriceQuantityError">Sva polja moraju da budu pozitivni decimalni brojevi</system:String>
     <system:String x:Key="CancelBill">Storniraj</system:String>
     <system:String x:Key="CancelBillDet">Storniraj račun</system:String>
     <system:String x:Key="EnterReason">Unesite razlog</system:String>
-    
+    <system:String x:Key="CreateBill">Kreiraj račun</system:String>
+    <system:String x:Key="Bill">Račun</system:String>
+    <system:String x:Key="AddProductToBill">Dodaj proizvod na račun</system:String>
+    <system:String x:Key="QuantityExceeded">Ne postoji potrebna količina datog proizvoda</system:String>
+    <system:String x:Key="QuantityUnitNotSupported">Selektovani proizvod se prodaje samo na cijele komade</system:String>
+
 
 
 </ResourceDictionary>

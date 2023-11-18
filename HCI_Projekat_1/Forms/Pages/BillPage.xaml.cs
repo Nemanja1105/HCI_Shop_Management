@@ -104,5 +104,21 @@ namespace HCI_Projekat_1.Forms.Pages
                 }
             }
         }
+
+        private async void createButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new CreateBillWindow();
+            dialog.ShowDialog();
+            if (dialog.Bill == null)
+                return;
+            try
+            {
+                await billViewModel.Insert(dialog.Bill);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }

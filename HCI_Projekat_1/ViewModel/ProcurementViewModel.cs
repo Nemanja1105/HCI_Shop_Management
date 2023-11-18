@@ -13,7 +13,7 @@ using System.Windows.Controls.Primitives;
 
 namespace HCI_Projekat_1.ViewModel
 {
-    internal class ProcurementViewModel:INotifyPropertyChanged
+    internal class ProcurementViewModel : INotifyPropertyChanged
     {
         private ProcurementService service = new ProcurementService();
         private List<Procurement> procurements;
@@ -38,7 +38,7 @@ namespace HCI_Projekat_1.ViewModel
                 result = await service.FindAll();
             }
             finally
-            {   
+            {
                 this.procurements = result;
                 Data = new ObservableCollection<Procurement>(result);
             }
@@ -51,11 +51,12 @@ namespace HCI_Projekat_1.ViewModel
             query = query.Where((el) => el.DateOfAcquisition.Date >= fromFilter.Date);
             Data = new ObservableCollection<Procurement>(query.ToList());
         }
-        
-       public async Task Insert(Procurement procurement)
+
+        public async Task Insert(Procurement procurement)
         {
-          var result=  await service.Insert(procurement);
-            Data.Add(result);
+            var result = await service.Insert(procurement);
+            procurements.Add(result);
+            FindAllByFilter();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

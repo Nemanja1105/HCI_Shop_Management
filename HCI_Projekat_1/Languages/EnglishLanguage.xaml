@@ -110,10 +110,15 @@
     <system:String x:Key="Procurementt">Procurement</system:String>
     <system:String x:Key="Transfer">Transfer</system:String>
     <system:String x:Key="AddProductToProcurement">Add product to procurement</system:String>
-    <system:String x:Key="PriceQuantityError">Price and quantity must be decimal numbers</system:String>
+    <system:String x:Key="PriceQuantityError">All fields must be positive decimal numbers</system:String>
     <system:String x:Key="CancelBill">Cancel</system:String>
     <system:String x:Key="CancelBillDet">Cancel bill</system:String>
     <system:String x:Key="EnterReason">Enter reason</system:String>
+    <system:String x:Key="CreateBill">Create bill</system:String>
+    <system:String x:Key="Bill">Bill</system:String>
+    <system:String x:Key="AddProductToBill">Add product to bill</system:String>
+    <system:String x:Key="QuantityExceeded">There is no required quantity of the given product</system:String>
+    <system:String x:Key="QuantityUnitNotSupported">The selected product is sold only in whole pieces</system:String>
 
 
 

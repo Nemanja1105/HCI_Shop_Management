@@ -42,6 +42,41 @@ namespace HCI_Projekat_1.Services
             }
         }
 
+        public async Task<Bill> Insert(Bill bill)
+        {
+            var emp = bill.Employee; bill.Employee = null;
+            var tmp = bill.Billitem.Select(item => new Billitem { Price = item.Price, Quantity = item.Quantity, ProductId = item.ProductId }).ToList();
+            var items = bill.Billitem; bill.Billitem = tmp;
+            using (var dbContext = new ShopManagementContext())
+            {
+                using (var transaction = dbContext.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        await dbContext.Bill.AddAsync(bill);
+                        foreach (var item in items)
+                        {
+                            var product = await dbContext.Product.FindAsync(item.ProductId);
+                            if (product != null)
+                            {
+                                product.Quantity -= item.Quantity;
+                                dbContext.Entry(product).State = EntityState.Modified;
+                            }
+                        }
+                        await dbContext.SaveChangesAsync();
+                        bill.Employee = emp;
+                        transaction.Commit();
+                        return bill;
+                    }
+                    catch (Exception ex)
+                    {
+                        await transaction.RollbackAsync();
+                        throw new Exception();
+                    }
+                }
+            }
+        }
+
         public async Task CancelBill(Canceledbill canceledbill)
         {
             var bill = canceledbill.Bill; canceledbill.Bill = null; canceledbill.Employee = null;

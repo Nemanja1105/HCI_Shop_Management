@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace HCI_Projekat_1.Models;
 
-public partial class Billitem
+public partial class Billitem:INotifyPropertyChanged
 {
     public Billitem()
     {
@@ -25,10 +27,11 @@ public partial class Billitem
         ProductId = productId;
         BillId = billId;
     }
+    private decimal quantity;
 
     public int Id { get; set; }
 
-    public decimal Quantity { get; set; }
+    public decimal Quantity { get { return this.quantity; } set { this.quantity = value; OnPropertyChanged(); } }
 
     public decimal Price { get; set; }
 
@@ -41,4 +44,11 @@ public partial class Billitem
     public virtual Bill Bill { get; set; }
 
     public virtual Product Product { get; set; }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected void OnPropertyChanged([CallerMemberName] string name = null)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }
 }

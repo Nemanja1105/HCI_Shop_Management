@@ -26,7 +26,7 @@ namespace HCI_Projekat_1
         public ManagerMain(Employee employee)
         {
             InitializeComponent();
-            if(employee.Theme!="OrangeTheme")
+            if (employee.Theme != "OrangeTheme")
                 ThemeUtil.ChangeTheme(employee.Theme);
             if (employee.Language != "SerbianLanguage")
                 LanguageUtil.ChangeLanguage(employee.Language);
@@ -61,6 +61,24 @@ namespace HCI_Projekat_1
             MainWindow loginWindow = new MainWindow();
             loginWindow.Show();
             this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            string pageTag = "";
+            if (Employee.Uloga)
+            {
+                pageTag = userItem.Tag as string;
+                userItem.IsSelected = true;
+            }
+            else
+            {
+                pageTag = billItem.Tag as string;
+                billItem.IsSelected = true;
+            }
+            Uri pageUri = new Uri($"/Forms/Pages/{pageTag}.xaml", UriKind.Relative);
+            mainFrame.Navigate(pageUri);
+
         }
     }
 }
