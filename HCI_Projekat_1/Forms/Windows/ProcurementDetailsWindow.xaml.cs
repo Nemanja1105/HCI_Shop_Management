@@ -1,5 +1,6 @@
 ﻿using HCI_Projekat_1.Models;
 using HCI_Projekat_1.Services;
+using HCI_Projekat_1.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,7 +47,7 @@ namespace HCI_Projekat_1.Forms.Windows
                 procurement.Procurementitem = await service.FindAllItemForProcurement(this.procurement);            }
             catch (Exception e)
             {
-                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
             this.DataContext = procurement;
             this.procurementGrid.DataContext = procurement.Procurementitem;

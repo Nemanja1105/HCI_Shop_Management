@@ -15,36 +15,36 @@
             <RowDefinition Height="1.5*" />
             <RowDefinition Height="11*" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" Content="Products"/>
+        <Label Grid.Row="0" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" Content="{DynamicResource Products}"/>
         <Grid Grid.Row="1" Margin="20,0,20,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition Height="1.5*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold">Category:</Label>
+            <Label Grid.Row="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Content="{DynamicResource Category}"></Label>
             <StackPanel Grid.Row="1"  Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
                 <ComboBox ItemsSource="{Binding Categories}" Grid.Row="1" MinWidth="120" Height="28" DisplayMemberPath="Name" VerticalAlignment="Center" SelectedValue="{Binding CategoryFilter,UpdateSourceTrigger=PropertyChanged}" FontSize="16" >
                     
                 </ComboBox>
-                <local:PlaceholderTextBox Style="{StaticResource PlaceholderTextBoxStyle}" Width="400" Height="28" Margin="10,0,0,0" FontSize="16" Placeholder="Search by name" Text="{Binding SearchFilter,UpdateSourceTrigger=PropertyChanged }"/>
+                <local:PlaceholderTextBox Style="{StaticResource PlaceholderTextBoxStyle}" Width="400" Height="28" Margin="10,0,0,0" FontSize="16" Placeholder="{DynamicResource SearchByName}" Text="{Binding SearchFilter,UpdateSourceTrigger=PropertyChanged }"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Height="30" VerticalAlignment="Top">
-                <Button Style="{StaticResource RoundButton}" Width="90" ToolTip="Add product" Name="addButton" Click="addButton_Click">
+                <Button Style="{StaticResource RoundButton}" Width="90" ToolTip="{DynamicResource AddProduct}" Name="addButton" Click="addButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Add" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                        <TextBlock Text="{DynamicResource Add}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                         <Image Source="/Images/add.png" Width="20" Height="20" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource RoundButton}" Width="90" Margin="10 0 0 0" Name="deleteButton" ToolTip="Delete product" Click="deleteButton_Click">
+                <Button Style="{StaticResource RoundButton}" Width="90" Margin="10 0 0 0" Name="deleteButton" ToolTip="{DynamicResource DeleteProduct}" Click="deleteButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Delete" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                        <TextBlock Text="{DynamicResource Delete}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                         <Image Source="/Images/delete.png" Width="20" Height="20" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource RoundButton}" Width="90" Margin="10 0 0 0" Name="updateButton" ToolTip="Update product" Click="updateButton_Click" >
+                <Button Style="{StaticResource RoundButton}" Width="90" Margin="10 0 0 0" Name="updateButton" ToolTip="{DynamicResource UpdateProduct}" Click="updateButton_Click" >
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Update" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                        <TextBlock Text="{DynamicResource Update}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                         <Image Source="/Images/update.png" Width="20" Height="20" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
@@ -71,13 +71,13 @@
                 <DataGrid.Columns>
 
              <!--       <DataGridTextColumn Header="ID" Width="1*" Binding="{Binding Id}" /> -->
-                    <DataGridTextColumn Header="Name" Width="1*" Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Quantity" Width="1*" Binding="{Binding Quantity}"/>
-                    <DataGridTextColumn Header="BarCode" Width="1*" Binding="{Binding Barkod}"/>
-                    <DataGridTextColumn Header="Unit" Width="1*" Binding="{Binding UnitOfMeasure}"/>
-                    <DataGridTextColumn Header="Purs. price" Width="1*" Binding="{Binding PurchasePrice}"/>
-                    <DataGridTextColumn Header="Sell price" Width="1*" Binding="{Binding SellingPrice}"/>
-                    <DataGridTextColumn Header="Category" Width="1*" Binding="{Binding Category.Name}"/>
+                    <DataGridTextColumn Header="{DynamicResource Name}" Width="1*" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="{DynamicResource Quantity}" Width="1*" Binding="{Binding Quantity}"/>
+                    <DataGridTextColumn Header="{DynamicResource BarCode}" Width="1*" Binding="{Binding Barkod}"/>
+                    <DataGridTextColumn Header="{DynamicResource Unit}" Width="1*" Binding="{Binding UnitOfMeasure}"/>
+                    <DataGridTextColumn Header="{DynamicResource PursPrice}" Width="1*" Binding="{Binding PurchasePrice}"/>
+                    <DataGridTextColumn Header="{DynamicResource SellPrice}" Width="1*" Binding="{Binding SellingPrice}"/>
+                    <DataGridTextColumn Header="{DynamicResource Category}" Width="1*" Binding="{Binding Category.Name}"/>
 
                 </DataGrid.Columns>
             </DataGrid>

@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Projekat_1"
         mc:Ignorable="d"
-        Title="AddSuplierWindow" Height="300" Width="350"
-        MinHeight="300" MinWidth="350" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="{DynamicResource AddSupplier}" Height="300" Width="350"
+        MinHeight="300" MinWidth="350" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -14,7 +14,7 @@
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal" >
-            <Label  FontWeight="Bold" FontSize="24" Name="mainLabel"  Content="Add supplier" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label  FontWeight="Bold" FontSize="24" Name="mainLabel"  Content="{DynamicResource AddSupplier}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Image Source="/Images/supplier.png" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
         </StackPanel>
         <Grid Grid.Row="1">
@@ -27,25 +27,25 @@
                 <RowDefinition Height="1*"></RowDefinition>
                 <RowDefinition Height="1*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Name:</Label>
-            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Address:</Label>
-            <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">PhoneNumber:</Label>
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource Name}"></Label>
+            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource Address}"></Label>
+            <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource PhoneNumber}"></Label>
 
-            <local:PlaceholderTextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Name}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter name"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Address}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter address"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding PhoneNumber}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter phone number"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Name}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="{DynamicResource EnterName}"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Address}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="{DynamicResource EnterAddress}"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding PhoneNumber}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="{DynamicResource EnterPhoneNumber}"></local:PlaceholderTextBox>
         </Grid>
 
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
             <Button Style="{StaticResource RoundButton}" Width="90" Click="addUpdateButton_Click">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Name="buttonText" Text="Add" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                    <TextBlock Name="buttonText" Text="{DynamicResource Add}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                     <Image Name="buttonImage" Source="/Images/add.png" Width="20" Height="20" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource RoundButton}" Width="90" Margin="20 0 0 0" Name="cancelButton" Click="cancelButton_Click" >
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Cancel" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                    <TextBlock Text="{DynamicResource Cancel}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                     <Image Source="/Images/cancel.png" Width="20" Height="20" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>

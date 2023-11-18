@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HCI_Projekat_1.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,7 +52,7 @@ namespace HCI_Projekat_1.Forms.Windows
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Cijena i kolicina moraju da budu decimalni brojevi", "Greska u formatu",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("PriceQuantityError"), LanguageUtil.GetTranslation("InputError"),MessageBoxButton.OK,MessageBoxImage.Error);
             }
         }
 

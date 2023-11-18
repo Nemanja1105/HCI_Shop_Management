@@ -1,5 +1,6 @@
 ﻿using HCI_Projekat_1.Forms.Windows;
 using HCI_Projekat_1.Models;
+using HCI_Projekat_1.Util;
 using HCI_Projekat_1.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
@@ -46,7 +47,7 @@ namespace HCI_Projekat_1.Forms.Pages
             }
             catch (Exception e)
             {
-                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
             this.DataContext = supplierViewModel;
         }
@@ -63,7 +64,7 @@ namespace HCI_Projekat_1.Forms.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -72,7 +73,7 @@ namespace HCI_Projekat_1.Forms.Pages
             var selected = (Supplier)supplierGrid.SelectedValue;
             if (selected != null)
             {
-                var Result = MessageBox.Show("Are you sure you want to delete the supplier??", "Delete category?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var Result = MessageBox.Show(LanguageUtil.GetTranslation("DeleteSupplierQuest"), LanguageUtil.GetTranslation("DeleteSupplier"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (Result == MessageBoxResult.Yes)
                 {
                     try
@@ -84,10 +85,10 @@ namespace HCI_Projekat_1.Forms.Pages
                     {
                         if (ex.InnerException is MySqlException mySqlEx && mySqlEx.Number == 1451)
                         {
-                            MessageBox.Show("Dobavljac je povezan sa drugim entitetima u sistemu. Brisanje nije dozvoljeno.", "Brisanje nije moguce", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show(LanguageUtil.GetTranslation("DeleteSupplierNotAllowed"), LanguageUtil.GetTranslation("DeleteCategoryExistProductMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                         else
-                            MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
                 supplierGrid.UnselectAll();
@@ -111,7 +112,7 @@ namespace HCI_Projekat_1.Forms.Pages
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }

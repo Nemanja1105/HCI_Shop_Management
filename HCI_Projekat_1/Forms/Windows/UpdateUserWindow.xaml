@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Projekat_1"
         mc:Ignorable="d"
-        Title="UpdateUserWindow" Height="500" Width="350"
-        MinHeight="500" MinWidth="350" WindowStartupLocation="CenterScreen">
+        Title="{DynamicResource Updateser}" Height="500" Width="350"
+        MinHeight="500" MinWidth="350" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>

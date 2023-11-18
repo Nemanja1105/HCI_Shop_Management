@@ -15,7 +15,7 @@ d:MinHeight="634" d:MinWidth="985"
             <RowDefinition Height="1.5*" />
             <RowDefinition Height="11*" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" Content="Bills"/>
+        <Label Grid.Row="0" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" Content="{DynamicResource Bills}"/>
         <Grid Grid.Row="1" Margin="20,0,20,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"></RowDefinition>
@@ -28,12 +28,12 @@ d:MinHeight="634" d:MinWidth="985"
                 <ColumnDefinition Width="3*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left">Payment type:</Label>
-            <Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"  HorizontalAlignment="Left">From date:</Label>
-            <Label Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"  HorizontalAlignment="Left">To date:</Label>
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Content="{DynamicResource PaymentType}"></Label>
+            <Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"  HorizontalAlignment="Left" Content="{DynamicResource FromDate}"></Label>
+            <Label Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" FontSize="14" FontWeight="Bold"  HorizontalAlignment="Left" Content="{DynamicResource ToDate}"></Label>
 
 
-            <ComboBox Name="paymentCombo" ItemsSource="{Binding}" SelectedValue="{Binding PaymentType,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Width="120" Height="28" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Left">
+            <ComboBox Name="paymentCombo" ItemsSource="{Binding}" SelectedValue="{Binding PaymentType,UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Width="120" Height="28" VerticalAlignment="Top" FontSize="16" HorizontalAlignment="Left" SelectedValuePath="Key" DisplayMemberPath="Value">
 
             </ComboBox>
             <DatePicker Grid.Row="1" Grid.Column="1" Width="120" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" SelectedDate="{Binding FromFilter,UpdateSourceTrigger=PropertyChanged}"></DatePicker>
@@ -41,9 +41,9 @@ d:MinHeight="634" d:MinWidth="985"
 
 
             <StackPanel Grid.Column="3" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Height="30" VerticalAlignment="Top">
-                <Button Style="{StaticResource RoundButton}" Width="170" ToolTip="Add product" Name="viewButton" Click="viewButton_Click">
+                <Button Style="{StaticResource RoundButton}" Width="170" ToolTip="{DynamicResource ViewBillDetails}" Name="viewButton" Click="viewButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="View details" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                        <TextBlock Text="{DynamicResource ViewDetails}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                         <Image Source="/Images/view.png" Width="20" Height="24" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
@@ -71,11 +71,11 @@ d:MinHeight="634" d:MinWidth="985"
                 <DataGrid.Columns>
 
                 <!--    <DataGridTextColumn Header="ID" Width="1*" Binding="{Binding Id}" />-->
-                    <DataGridTextColumn Header="Date Of Issue" Width="2*" Binding="{Binding DateOfIssue,Converter={StaticResource DateToStringConver}}"/>
-                    <DataGridTextColumn Header="Payment Type" Width="1.5*" Binding="{Binding PaymentType,Converter={StaticResource BooleanToPaymentTypeConverter}}"/>
-                    <DataGridTextColumn Header="Total Price" Width="1.5*" Binding="{Binding TotalPrice}"/>
+                    <DataGridTextColumn Header="{DynamicResource DateOfIssue}" Width="2*" Binding="{Binding DateOfIssue,Converter={StaticResource DateToStringConver}}"/>
+                    <DataGridTextColumn Header="{DynamicResource PaymentType}" Width="1.5*" Binding="{Binding PaymentType,Converter={StaticResource BooleanToPaymentTypeConverter}}"/>
+                    <DataGridTextColumn Header="{DynamicResource TotalPrice}" Width="1.5*" Binding="{Binding TotalPrice}"/>
                     <DataGridTextColumn Header="Status" Width="1.5*" Binding="{Binding Canceledbill,Converter={StaticResource CollectionToCanceledBillConvertor}}"/>
-                    <DataGridTextColumn Header="Employee" Width="1.5*" Binding="{Binding Employee.FullName}"/>
+                    <DataGridTextColumn Header="{DynamicResource Employee}" Width="1.5*" Binding="{Binding Employee.FullName}"/>
 
 
                 </DataGrid.Columns>

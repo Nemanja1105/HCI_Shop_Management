@@ -1,5 +1,7 @@
 ﻿using HCI_Projekat_1.Forms.Windows;
 using HCI_Projekat_1.Models;
+using HCI_Projekat_1.Models.Enums;
+using HCI_Projekat_1.Util;
 using HCI_Projekat_1.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -47,7 +49,7 @@ namespace HCI_Projekat_1.Forms.Pages
              }
              catch (Exception ex)
              {
-                 MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                 MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
              }
         }
 
@@ -56,7 +58,7 @@ namespace HCI_Projekat_1.Forms.Pages
             var selected = (Product)productGrid.SelectedValue;
             if (selected != null)
             {
-                var Result = MessageBox.Show("Are you sure you want to delete the product?", "Delete product?", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                var Result = MessageBox.Show(LanguageUtil.GetTranslation("DeleteProductQuest"), LanguageUtil.GetTranslation("DeleteProduct"), MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if (Result == MessageBoxResult.Yes)
                 {
                     try
@@ -65,7 +67,7 @@ namespace HCI_Projekat_1.Forms.Pages
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
                     }
 
                 }
@@ -91,7 +93,7 @@ namespace HCI_Projekat_1.Forms.Pages
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
             }
@@ -107,7 +109,7 @@ namespace HCI_Projekat_1.Forms.Pages
             }
             catch (Exception e)
             {
-                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
              this.DataContext = productViewModel;
         }

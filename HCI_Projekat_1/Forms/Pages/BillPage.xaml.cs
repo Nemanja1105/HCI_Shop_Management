@@ -1,6 +1,7 @@
 ﻿using HCI_Projekat_1.Forms.Windows;
 using HCI_Projekat_1.Models;
 using HCI_Projekat_1.Models.Enums;
+using HCI_Projekat_1.Util;
 using HCI_Projekat_1.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -32,15 +33,17 @@ namespace HCI_Projekat_1.Forms.Pages
         public BillPage()
         {
             InitializeComponent();
-            paymentCombo.ItemsSource = billViewModel.PaymentTypes;
-          /*  paymentCombo.ItemsSource = paymentTypes;
-            bills.Add(new Bill { Id = 1, DateOfIssue = DateTime.Now, PaymentType = true, TotalPrice = 123M, Employee = new Employee { Name = "Miki", Surname = "Mikic" } });
-            bills.Add(new Bill { Id = 2, DateOfIssue = DateTime.Now, PaymentType = false, TotalPrice = 23M, Employee = new Employee { Name = "Miki", Surname = "Mikic" } });
-            var tmp = new Bill { Id = 3, DateOfIssue = DateTime.Now, PaymentType = true, TotalPrice = 123M, Employee = new Employee { Name = "Maja", Surname = "Polic" } };
-            tmp.Billitem.Add(new Billitem { Id = 1, Quantity = 2M, Price = 1.4M, Product = new Product { Name = "Cokolada Milka" } });
-            tmp.Canceledbill.Add(new Canceledbill { Reason="Greska u stampi, nestalo papira, internet pukao sve otislo u helac",Employee=new Employee { Name="Marko",Surname="Markovic"},Date=DateTime.Now });
-            bills.Add(tmp);
-            billGrid.DataContext = bills;*/
+            initUserCombo();
+        }
+
+        private void initUserCombo()
+        {
+            var map = new Dictionary<PaymentType, string>();
+            foreach (var payment in billViewModel.PaymentTypes)
+            {
+                map.Add(payment, LanguageUtil.GetTranslation(payment.ToString()));
+            }
+            paymentCombo.ItemsSource = map;
         }
 
         private async Task InitializeAsync()
@@ -52,7 +55,7 @@ namespace HCI_Projekat_1.Forms.Pages
             }
             catch (Exception e)
             {
-                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
             this.DataContext = billViewModel;
         }

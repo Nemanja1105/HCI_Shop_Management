@@ -43,7 +43,7 @@ namespace HCI_Projekat_1.Forms.Pages
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -58,7 +58,7 @@ namespace HCI_Projekat_1.Forms.Pages
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
@@ -72,23 +72,23 @@ namespace HCI_Projekat_1.Forms.Pages
         {
             if (string.IsNullOrEmpty(oldPasswordBox.Password) || string.IsNullOrEmpty(newPasswordBox.Password))
             {
-                MessageBox.Show("Sva polja forme moraju biti validno popunjena", "Greska pri unosu", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("FormNotValid"), LanguageUtil.GetTranslation("InputError"), MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             try
             {
                 await this.settingsViewModel.ChangePassword(oldPasswordBox.Password, newPasswordBox.Password);
-                MessageBox.Show("Lozinka uspjesno promjenjena", "Operacija uspjesna", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show(LanguageUtil.GetTranslation("PasswordChangeSucc"),  LanguageUtil.GetTranslation("OperationSucc"), MessageBoxButton.OK, MessageBoxImage.Information);
                 oldPasswordBox.Clear();
                 newPasswordBox.Clear();
             }
             catch(PasswordMismatchException ex)
             {
-                MessageBox.Show("Lozinke se ne poklapaju. Pokusajte ponovo", "Izmjena lozinke neuspjesna", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("PasswordMismatch"), LanguageUtil.GetTranslation("OperationUnsucc"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

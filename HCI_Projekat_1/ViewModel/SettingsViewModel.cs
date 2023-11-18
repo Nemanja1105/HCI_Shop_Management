@@ -1,4 +1,5 @@
 ﻿using HCI_Projekat_1.Models;
+using HCI_Projekat_1.Models.Enums;
 using HCI_Projekat_1.Services;
 using HCI_Projekat_1.Util;
 using System;
@@ -20,12 +21,15 @@ namespace HCI_Projekat_1.ViewModel
             this.Language = new Language {Name= employee.Language };
             this.Themes= ThemeUtil.GetThemes();
             this.Languages=LanguageUtil.GetLanguages();
+            
         }
         public List<Theme> Themes { get; set; }
         public List<Language> Languages { get; set; }
         public Theme Theme { get; set; }
         public Language Language {  get; set; }
-        
+
+      
+
 
         public async Task ChangeTheme()
         {

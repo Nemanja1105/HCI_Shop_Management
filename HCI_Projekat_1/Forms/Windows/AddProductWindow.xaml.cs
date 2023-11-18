@@ -1,4 +1,5 @@
 ﻿using HCI_Projekat_1.Models;
+using HCI_Projekat_1.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,9 @@ namespace HCI_Projekat_1.Forms.Windows
         public Product Product { get; set; }
         public List<Category> Categories { get; set; }
         private List<String> units = new(Enum.GetNames<UnitOfMeasure>());
-      
+        private bool isClosedByButton = false;
+
+
 
         public AddProductWindow(List<Category> categories)
         {
@@ -41,12 +44,13 @@ namespace HCI_Projekat_1.Forms.Windows
         {
             InitializeComponent();
             this.Product = new Product(product);
-            this.mainLabel.Content = "Update product";
+            this.mainLabel.Content = LanguageUtil.GetTranslation("UpdateProduct");
             Categories = categories;
             categoryCombo.ItemsSource = Categories;
             unitCombo.ItemsSource = units;
             this.DataContext = Product;
-            this.buttonText.Text = "Update";
+            this.Title = LanguageUtil.GetTranslation("UpdateProduct");
+            this.buttonText.Text = LanguageUtil.GetTranslation("Update");
             buttonImage.Source = new BitmapImage(new Uri("/Images/update.png", UriKind.Relative));
 
 
@@ -55,6 +59,7 @@ namespace HCI_Projekat_1.Forms.Windows
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
             Product = null;
+            isClosedByButton = true;
             this.Close();
         }
 
@@ -64,7 +69,7 @@ namespace HCI_Projekat_1.Forms.Windows
             if (string.IsNullOrEmpty(Product.Name) || Product.Quantity <= 0.0M || string.IsNullOrEmpty(Product.Barkod) || string.IsNullOrEmpty(Product.UnitOfMeasure) ||
                 Product.PurchasePrice <= 0.0M || Product.SellingPrice <= 0.0M || Product.Category == null || Product.UnitOfMeasure==null)
             {
-                MessageBox.Show("Sva polja forme moraju biti validno popunjena", "Greska pri unosu", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("FormNotValid"), LanguageUtil.GetTranslation("InputError"), MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             try
@@ -75,10 +80,19 @@ namespace HCI_Projekat_1.Forms.Windows
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Sva polja forme moraju biti validno popunjena36", "Greska pri unosu", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("FormNotValid"), LanguageUtil.GetTranslation("InputError"), MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
+            isClosedByButton = true;
             this.Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!isClosedByButton)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Projekat_1.Forms.Windows"
         mc:Ignorable="d"
-        Title="BillDetailsWindow" Height="600" Width="750"
+        Title="{DynamicResource BillDetails}" Height="600" Width="750"
         MinHeight="600" MinWidth="750" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
@@ -14,7 +14,7 @@
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal" >
-            <Label  FontWeight="Bold" FontSize="24" Name="mainLabel"  Content="Bill details" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label  FontWeight="Bold" FontSize="24" Name="mainLabel"  Content="{DynamicResource BillDetails}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Image Source="/Images/bill.png" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
         </StackPanel>
         <Grid Grid.Row="1" Margin="10 0 10 0">
@@ -40,10 +40,10 @@
                     </DataGrid.Resources>
                     <DataGrid.Columns>
 
-                        <DataGridTextColumn Header="Product" Width="1*" Binding="{Binding Product.Name}" />
-                        <DataGridTextColumn Header="Quantity" Width="1*" Binding="{Binding Quantity}"/>
-                        <DataGridTextColumn Header="Price" Width="1*" Binding="{Binding Price}"/>
-                        <DataGridTextColumn Header="Total" Width="1*" Binding="{Binding TotalPrice}" />
+                        <DataGridTextColumn Header="{DynamicResource Product}" Width="1*" Binding="{Binding Product.Name}" />
+                        <DataGridTextColumn Header="{DynamicResource Quantity}" Width="1*" Binding="{Binding Quantity}"/>
+                        <DataGridTextColumn Header="{DynamicResource Price}" Width="1*" Binding="{Binding Price}"/>
+                    <DataGridTextColumn Header="{DynamicResource Total}" Width="1*" Binding="{Binding TotalPrice}" />
 
                     </DataGrid.Columns>
                 </DataGrid>
@@ -71,10 +71,10 @@
                         <RowDefinition Height="1*"></RowDefinition>
                         <RowDefinition Height="1*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Total:</Label>
-                    <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Date Of Issue:</Label>
-                    <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Payment type:</Label>
-                    <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Employee:</Label>
+                    <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource Total}"></Label>
+                    <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource DateOfIssue}"></Label>
+                    <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource PaymentType}"></Label>
+                    <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource Employee}"></Label>
                     <Label Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="Gray" Margin="10 0 0 0" Content="{Binding TotalPrice}"></Label>
                     <Label Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="Gray" Margin="10 0 0 0" Content="{Binding DateOfIssue,Converter={StaticResource DateToStringConver}}"></Label>
                     <Label Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Foreground="Gray" Margin="10 0 0 0" Content="{Binding PaymentType,Converter={StaticResource BooleanToPaymentTypeConverter}}"></Label>
@@ -92,14 +92,14 @@
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                         <ColumnDefinition Width="1*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Label Visibility="{Binding isCanceled,Converter={StaticResource BooleanToVisibleConvertercs}}"  Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Center" FontWeight="Bold" Grid.ColumnSpan="2">Cancellation</Label>
-                    <Label Visibility="{Binding isCanceled,Converter={StaticResource BooleanToVisibleConvertercs}}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Date:</Label>
-                    <Label Visibility="{Binding isCanceled,Converter={StaticResource BooleanToVisibleConvertercs}}"  Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Employee:</Label>
+                    <Label Visibility="{Binding isCanceled,Converter={StaticResource BooleanToVisibleConvertercs}}"  Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="18" HorizontalAlignment="Center" FontWeight="Bold" Grid.ColumnSpan="2" Content="{DynamicResource Cancellation}"></Label>
+                    <Label Visibility="{Binding isCanceled,Converter={StaticResource BooleanToVisibleConvertercs}}" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource Date}"></Label>
+                    <Label Visibility="{Binding isCanceled,Converter={StaticResource BooleanToVisibleConvertercs}}"  Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource Employee}"></Label>
                     <Label Visibility="{Binding isCanceled,Converter={StaticResource BooleanToVisibleConvertercs}}"  Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Foreground="Gray" Content="{Binding Canceledbill[0].Date,Converter={StaticResource DateToStringConver}}"></Label>
                     <Label Visibility="{Binding isCanceled,Converter={StaticResource BooleanToVisibleConvertercs}}"  Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Foreground="Gray" Content="{Binding Canceledbill[0].Employee.FullName}"></Label>
 
 
-                    <Label Visibility="{Binding isCanceled,Converter={StaticResource BooleanToVisibleConvertercs}}" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Reason:</Label>
+                    <Label Visibility="{Binding isCanceled,Converter={StaticResource BooleanToVisibleConvertercs}}" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource Reason}"></Label>
                     <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="4" Grid.Column="1">
                         <TextBlock Margin="15 0 0 0" Visibility="{Binding isCanceled,Converter={StaticResource BooleanToVisibleConvertercs}}"  Foreground="Gray" FontWeight="SemiBold" VerticalAlignment="Center"  TextWrapping="Wrap" FontSize="14" Height="Auto" Text="{Binding Canceledbill[0].Reason}" ></TextBlock>
                     </ScrollViewer>
@@ -112,7 +112,7 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
             <Button Style="{StaticResource RoundButton}" Width="90" Margin="20 0 0 0" Name="closeButton" Click="closeButton_Click" >
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Close" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                    <TextBlock Text="{DynamicResource Close}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                     <Image Source="/Images/cancel.png" Width="20" Height="20" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>

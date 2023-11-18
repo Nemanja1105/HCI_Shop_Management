@@ -32,19 +32,86 @@
     <system:String x:Key="All">Svi</system:String>
     <system:String x:Key="DbExceptionMain">Desila se greška prilikom komunikacije sa bazom podataka</system:String>
     <system:String x:Key="DbExceptionMessage">Greška u komunikaciji</system:String>
-    <system:String x:Key="DeleteUserQues">Jeste li sigurni da želite ukloniti korisnika?</system:String>
+    <system:String x:Key="DeleteUserQues">Da li ste sigurni da želite ukloniti korisnika?</system:String>
     <system:String x:Key="EnterUsername">Unesite korisničko ime</system:String>
     <system:String x:Key="EnterPassword">Unesite lozinku</system:String>
     <system:String x:Key="EnterRepPassword">Unesite lozinku</system:String>
-    <system:String x:Key="EnterName">Unesite ime</system:String>
+    <system:String x:Key="EnterName">Unesite naziv</system:String>
     <system:String x:Key="EnterSurname">Unesite prezime</system:String>
     <system:String x:Key="EnterJMBG">Unesite JMBG</system:String>
     <system:String x:Key="EnterAddress">Unesite adresu</system:String>
     <system:String x:Key="EnterPhoneNumber">Unesite broj telefona</system:String>
-    
-    
-    
-    
-    
+    <system:String x:Key="Category">Kategorija</system:String>
+    <system:String x:Key="AddProduct">Dodaj proizvod</system:String>
+    <system:String x:Key="DeleteProduct">Ukloni proizvod</system:String>
+    <system:String x:Key="UpdateProduct">Ažuriraj proizvod</system:String>
+    <system:String x:Key="Name">Naziv</system:String>
+    <system:String x:Key="Quantity">Količina</system:String>
+    <system:String x:Key="BarCode">Bar kod</system:String>
+    <system:String x:Key="Unit">Jedinica</system:String>
+    <system:String x:Key="PursPrice">Nab. cijena</system:String>
+    <system:String x:Key="SellPrice">Prod. cijena</system:String>
+    <system:String x:Key="DeleteProductQuest">Da li ste sigurni da želite ukloniti proizvod?</system:String>
+    <system:String x:Key="UnitOfMeasure">Jedinica mjere</system:String>
+    <system:String x:Key="PurchasePrice">Nabavna cijena</system:String>
+    <system:String x:Key="SellPriceFull">Prodajna cijena</system:String>
+    <system:String x:Key="EnterQuantity">Unesite količinu</system:String>
+    <system:String x:Key="EnterBarCode">Unesite bar kod</system:String>
+    <system:String x:Key="EnterPrice">Unesite cijenu</system:String>
+    <system:String x:Key="FormNotValid">Sva polja forma moraju biti validno popunjena</system:String>
+    <system:String x:Key="InputError">Greška pri unosu</system:String>
+    <system:String x:Key="ProductCategories">Kategorije proizvoda</system:String>
+    <system:String x:Key="DeleteCategoryQuest">Da li ste sigurni da želite ukloniti kategoriju?</system:String>
+    <system:String x:Key="DeleteCategory">Ukloni kategoriju</system:String>
+    <system:String x:Key="AddCategory">Dodaj kategoriju proizvoda</system:String>
+    <system:String x:Key="UpdateCategory">Ažuriraj kategoriju proizvoda</system:String>
+    <system:String x:Key="DeleteCategoryExistProduct">Postoje proizvodi za datu kategoriju. Brisanje nije dozvoljeno.</system:String>
+    <system:String x:Key="DeleteCategoryExistProductMessage">Brisanje nije dozvoljeno.</system:String>
+    <system:String x:Key="AddSupplier">Dodaj dobavljača</system:String>
+    <system:String x:Key="DeleteSupplier">Ukloni dobavljača</system:String>
+    <system:String x:Key="UpdateSupplier">Ažuriraj dobavljača</system:String>
+    <system:String x:Key="DeleteSupplierQuest">Da li ste sigurni da želite ukloniti dobavljača?</system:String>
+    <system:String x:Key="DeleteSupplierNotAllowed">Dobavljac je povezan sa drugim entitetima u sistemu. Brisanje nije dozvoljeno.</system:String>
+    <system:String x:Key="MyProfile">Moj profil</system:String>
+    <system:String x:Key="OldPassword">Stara lozinka</system:String>
+    <system:String x:Key="NewPassword">Nova lozinka</system:String>
+    <system:String x:Key="Appearance">Izlged</system:String>
+    <system:String x:Key="Theme">Tema</system:String>
+    <system:String x:Key="Language">Jezik</system:String>
+    <system:String x:Key="PasswordChangeSucc">Lozinka uspješno promjenjena.</system:String>
+    <system:String x:Key="OperationSucc">Operacija uspješna</system:String>
+    <system:String x:Key="OperationUnsucc">Operacija neuspješna</system:String>
+    <system:String x:Key="PasswordMismatch">Lozinke se ne poklapaju. Pokušajte ponovo.</system:String>
+    <system:String x:Key="SerbianLanguage">Srpski</system:String>
+    <system:String x:Key="EnglishLanguage">Engleski</system:String>
+    <system:String x:Key="PaymentType">Način plačanja</system:String>
+    <system:String x:Key="FromDate">Datum od</system:String>
+    <system:String x:Key="ToDate">Datum do</system:String>
+    <system:String x:Key="ViewDetails">Pregled detalja</system:String>
+    <system:String x:Key="ViewBillDetails">Pregled detalja računa</system:String>
+    <system:String x:Key="DateOfIssue">Datum izdavanja</system:String>
+    <system:String x:Key="TotalPrice">Ukupna cijena</system:String>
+    <system:String x:Key="Employee">Zaposleni</system:String>
+    <system:String x:Key="BillDetails">Detalji računa</system:String>
+    <system:String x:Key="Product">Proizvod</system:String>
+    <system:String x:Key="Price">Cijena</system:String>
+    <system:String x:Key="Total">Ukupno</system:String>
+    <system:String x:Key="Cancellation">Storniranje</system:String>
+    <system:String x:Key="Date">Datum</system:String>
+    <system:String x:Key="Reason">Razlog</system:String>
+    <system:String x:Key="Close">Zatvori</system:String>
+    <system:String x:Key="Create">Kreiraj</system:String>
+    <system:String x:Key="Supplier">Dobavljač</system:String>
+    <system:String x:Key="DateOfAcquisition">Datum nabavke</system:String>
+    <system:String x:Key="Cash">Keš</system:String>
+    <system:String x:Key="Card">Kartica</system:String>
+    <system:String x:Key="ProcurementDetails">Detalji nabavke</system:String>
+    <system:String x:Key="CreateProcurement">Kreiraj nabavku</system:String>
+    <system:String x:Key="ProducstCurrent">Proizvodi[Trenutno]</system:String>
+    <system:String x:Key="Procurementt">Nabavka</system:String>
+    <system:String x:Key="Transfer">Prebaci</system:String>
+    <system:String x:Key="AddProductToProcurement">Dodaj proizvod u nabavku</system:String>
+    <system:String x:Key="PriceQuantityError">Cijena i količina moraju da budu decimalni brojevi</system:String>
+
 
 </ResourceDictionary>

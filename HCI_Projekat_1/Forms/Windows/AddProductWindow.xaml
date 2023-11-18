@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Projekat_1"
         mc:Ignorable="d"
-        Title="AddProductWindow" Height="500" Width="350"
-        MinHeight="500" MinWidth="350" WindowStartupLocation="CenterScreen">
+        Title="{DynamicResource AddProduct}" Height="500" Width="350"
+        MinHeight="500" MinWidth="350" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -14,7 +14,7 @@
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal" >
-            <Label  FontWeight="Bold" FontSize="24" Name="mainLabel"  Content="Add product" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label  FontWeight="Bold" FontSize="24" Name="mainLabel"  Content="{DynamicResource AddProduct}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Image Source="/Images/products.png" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
         </StackPanel>
         <Grid Grid.Row="1">
@@ -32,22 +32,22 @@
                 <RowDefinition Height="1*"></RowDefinition>
                 
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Name:</Label>
-            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Quantity:</Label>
-            <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">BarCode:</Label>
-            <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Unit Of Measure:</Label>
-            <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Purchase Price:</Label>
-            <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Selling Price:</Label>
-            <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Category:</Label>
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource Name}"></Label>
+            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource Quantity}"></Label>
+            <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource BarCode}"></Label>
+            <Label Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource UnitOfMeasure}"></Label>
+            <Label Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource PurchasePrice}"></Label>
+            <Label Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource SellPriceFull}"></Label>
+            <Label Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource Category}"></Label>
 
-            <local:PlaceholderTextBox   Grid.Row="0" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Name}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter name"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox x:Name="quantityTextBox" Grid.Row="1" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Quantity}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter quantity"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Barkod}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter barcode"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox   Grid.Row="0" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Name}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="{DynamicResource EnterName}"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox x:Name="quantityTextBox" Grid.Row="1" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Quantity}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="{DynamicResource EnterQuantity}"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Barkod}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="{DynamicResource EnterBarCode}"></local:PlaceholderTextBox>
             <ComboBox Name="unitCombo" Grid.Row="3" Grid.Column="1" Height="28" ItemsSource="{Binding}" VerticalAlignment="Center" FontSize="16" Margin="10 0 10 0" SelectedValue="{Binding UnitOfMeasure}">
                 
             </ComboBox>
-            <local:PlaceholderTextBox x:Name="purcTextBox" Grid.Row="4" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter price" Text="{Binding PurchasePrice}"></local:PlaceholderTextBox>
-            <local:PlaceholderTextBox x:Name="sellTextBox" Grid.Row="5" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="Enter price" Text="{Binding SellingPrice}"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox x:Name="purcTextBox" Grid.Row="4" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="{DynamicResource EnterPrice}" Text="{Binding PurchasePrice}"></local:PlaceholderTextBox>
+            <local:PlaceholderTextBox x:Name="sellTextBox" Grid.Row="5" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Placeholder="{DynamicResource EnterPrice}" Text="{Binding SellingPrice}"></local:PlaceholderTextBox>
             <ComboBox Name="categoryCombo" Grid.Row="6" Grid.Column="1" Height="28" ItemsSource="{Binding}" DisplayMemberPath="Name" VerticalAlignment="Center" FontSize="16" Margin="10 0 10 0" SelectedValue="{Binding Category}">
                 
             </ComboBox>
@@ -58,13 +58,13 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
             <Button Style="{StaticResource RoundButton}" Width="90" Name="addupdateButton" Click="addupdateButton_Click">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock x:Name="buttonText" Text="Add" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                    <TextBlock x:Name="buttonText" Text="{DynamicResource Add}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                     <Image x:Name="buttonImage" Source="/Images/add.png" Width="20" Height="20" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource RoundButton}" Width="90" Margin="20 0 0 0" Name="cancelButton" Click="cancelButton_Click" >
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Cancel" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                    <TextBlock Text="{DynamicResource Cancel}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                     <Image Source="/Images/cancel.png" Width="20" Height="20" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>

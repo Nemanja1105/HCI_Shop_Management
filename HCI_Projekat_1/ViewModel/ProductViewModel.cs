@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using HCI_Projekat_1.Util;
 
 namespace HCI_Projekat_1.ViewModel
 {
@@ -21,7 +22,7 @@ namespace HCI_Projekat_1.ViewModel
         public ObservableCollection<Product> Data { get { return this.data; } set { data = value; OnPropertyChanged(); } }
         public List<Category> Categories { get; set; } = new List<Category>();
 
-        private Category categoryFilter = new Category("All");
+        private Category categoryFilter = new Category(LanguageUtil.GetTranslation("All"));
         private String searchFilter = "";
         public Category CategoryFilter { get { return categoryFilter; } set { this.categoryFilter = value; FindAllByFilter(); } }
         public String SearchFilter { get { return searchFilter; } set { this.searchFilter = value; FindAllByFilter(); } }

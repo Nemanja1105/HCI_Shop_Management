@@ -1,5 +1,6 @@
 ﻿using HCI_Projekat_1.Forms.Windows;
 using HCI_Projekat_1.Models;
+using HCI_Projekat_1.Util;
 using HCI_Projekat_1.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -56,7 +57,7 @@ namespace HCI_Projekat_1.Forms.Pages
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -74,7 +75,7 @@ namespace HCI_Projekat_1.Forms.Pages
             }
             catch (Exception e)
             {
-                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
             this.DataContext = procurementViewModel;
         }

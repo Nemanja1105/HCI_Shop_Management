@@ -15,7 +15,7 @@
             <RowDefinition Height="1.5*" />
             <RowDefinition Height="11*" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" Content="Suppliers"/>
+        <Label Grid.Row="0" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" Content="{DynamicResource Suppliers}"/>
         <Grid Grid.Row="1" Margin="20,0,20,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"></RowDefinition>
@@ -24,25 +24,25 @@
            
             <StackPanel Grid.Row="1"  Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
 
-                <local:PlaceholderTextBox Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding SearchFilter,UpdateSourceTrigger=PropertyChanged }" Width="450" Height="28" FontSize="16" Placeholder="Search by name"/>
+                <local:PlaceholderTextBox Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding SearchFilter,UpdateSourceTrigger=PropertyChanged }" Width="450" Height="28" FontSize="16" Placeholder="{DynamicResource SearchByName}"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Height="30" VerticalAlignment="Top">
-                <Button Style="{StaticResource RoundButton}" Width="90" ToolTip="Add supplier" Name="addButton" Click="addButton_Click">
+                <Button Style="{StaticResource RoundButton}" Width="90" ToolTip="{DynamicResource AddSupplier}" Name="addButton" Click="addButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Add" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                        <TextBlock Text="{DynamicResource Add}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                         <Image Source="/Images/add.png" Width="20" Height="20" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource RoundButton}" Width="90" Margin="10 0 0 0" Name="deleteButton" ToolTip="Delete supplier" Click="deleteButton_Click">
+                <Button Style="{StaticResource RoundButton}" Width="90" Margin="10 0 0 0" Name="deleteButton" ToolTip="{DynamicResource DeleteSupplier}" Click="deleteButton_Click">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Delete" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                        <TextBlock Text="{DynamicResource Delete}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                         <Image Source="/Images/delete.png" Width="20" Height="20" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource RoundButton}" Width="90" Margin="10 0 0 0" ToolTip="Update supplier" Name="updateButton" Click="updateButton_Click" >
+                <Button Style="{StaticResource RoundButton}" Width="90" Margin="10 0 0 0" ToolTip="{DynamicResource UpdateSupplier}" Name="updateButton" Click="updateButton_Click" >
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Update" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                        <TextBlock Text="{DynamicResource Update}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                         <Image Source="/Images/update.png" Width="20" Height="20" VerticalAlignment="Center" />
                     </StackPanel>
                 </Button>
@@ -70,9 +70,9 @@
                 <DataGrid.Columns>
 
               <!--      <DataGridTextColumn Header="ID" Width="1*" Binding="{Binding Id}" /> -->
-                    <DataGridTextColumn Header="Name" Width="1*" Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Phone Number" Width="1*" Binding="{Binding PhoneNumber}"/>
-                    <DataGridTextColumn Header="Address" Width="1*" Binding="{Binding Address}"/>
+                    <DataGridTextColumn Header="{DynamicResource Name}" Width="1*" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="{DynamicResource PhoneNumber}" Width="1*" Binding="{Binding PhoneNumber}"/>
+                    <DataGridTextColumn Header="{DynamicResource Address}" Width="1*" Binding="{Binding Address}"/>
                     
 
                 </DataGrid.Columns>

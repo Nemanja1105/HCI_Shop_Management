@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Projekat_1"
         mc:Ignorable="d"
-        Title="AddProductToProcurement"  Height="220" Width="370"
+        Title="{DynamicResource AddProductToProcurement}"  Height="220" Width="370"
         MinHeight="220" MinWidth="370" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
@@ -14,7 +14,7 @@
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal" >
-            <Label  FontWeight="Bold" FontSize="24" Name="mainLabel"  Content="Add product to procurement" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Label  FontWeight="Bold" FontSize="24" Name="mainLabel"  Content="{DynamicResource AddProductToProcurement}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Image Source="/Images/quantity.png" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center"></Image>
         </StackPanel>
         <Grid Grid.Row="1">
@@ -27,9 +27,9 @@
                 <RowDefinition Height="1*"></RowDefinition>
 
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Quantity:</Label>
+            <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource Quantity}"></Label>
             <local:PlaceholderTextBox x:Name="quantityTextBox"  Grid.Row="0" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Text="1,0"></local:PlaceholderTextBox>
-            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0">Purchase price:</Label>
+            <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource PurchasePrice}"></Label>
             <local:PlaceholderTextBox x:Name="priceTextBox"   Grid.Row="1" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Height="25" Margin="10 0 10 0" FontSize="16" Text="1,0"></local:PlaceholderTextBox>
 
         </Grid>
@@ -37,13 +37,13 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Height="30">
             <Button Style="{StaticResource RoundButton}" Width="90" Click="Button_Click">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Add" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                    <TextBlock Text="{DynamicResource Add}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                     <Image Source="/Images/add.png" Width="20" Height="20" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>
             <Button Style="{StaticResource RoundButton}" Width="90" Margin="20 0 0 0" Name="cancelButton" Click="cancelButton_Click" >
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Cancel" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
+                    <TextBlock Text="{DynamicResource Cancel}" VerticalAlignment="Center" Margin="0 0 5 0" FontSize="16" />
                     <Image Source="/Images/cancel.png" Width="20" Height="20" VerticalAlignment="Center" />
                 </StackPanel>
             </Button>

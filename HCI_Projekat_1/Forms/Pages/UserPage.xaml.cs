@@ -46,7 +46,7 @@ namespace HCI_Projekat_1.Forms.Pages
         }
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            InitializeAsync();
+            await InitializeAsync();
             isComboBoxInitialized = true;
         }
 

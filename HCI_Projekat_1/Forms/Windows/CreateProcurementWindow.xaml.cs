@@ -1,4 +1,5 @@
 ﻿using HCI_Projekat_1.Models;
+using HCI_Projekat_1.Util;
 using HCI_Projekat_1.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -65,7 +66,7 @@ namespace HCI_Projekat_1.Forms.Windows
         {
             if(procurementViewModel.Supplier==null || procurementViewModel.Procurementitems.Count == 0)
             {
-                MessageBox.Show("Sva polja forme moraju biti validno popunjena", "Greska pri unosu", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("FormNotValid"), LanguageUtil.GetTranslation("InputError"), MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             Procurement = procurementViewModel.CreateProcurement();
@@ -81,7 +82,7 @@ namespace HCI_Projekat_1.Forms.Windows
             }
             catch (Exception e)
             {
-                MessageBox.Show("Desila se greska prilikom komunikacije sa bazom podataka", "Greska u komunikaciji", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("DbExceptionMain"), LanguageUtil.GetTranslation("DbExceptionMessage"), MessageBoxButton.OK, MessageBoxImage.Error);
             }
             currProductGrid.DataContext = procurementViewModel.Products;
             procurementGrid.DataContext = procurementViewModel.Procurementitems;
@@ -92,7 +93,7 @@ namespace HCI_Projekat_1.Forms.Windows
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            InitializeAsync();
+            await InitializeAsync();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

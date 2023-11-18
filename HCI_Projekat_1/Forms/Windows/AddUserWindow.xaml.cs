@@ -24,6 +24,7 @@ namespace HCI_Projekat_1.Forms.Windows
     {
         public Employee Employee { get; set; } = null;
         private List<UserType> userTypes = new List<UserType> { UserType.Worker,UserType.Manager};
+        private bool isClosedByButton = false;
         public AddUserWindow()
         {
             InitializeComponent();
@@ -44,6 +45,7 @@ namespace HCI_Projekat_1.Forms.Windows
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
             Employee = null;
+            isClosedByButton = true;
             this.Close();
         }
 
@@ -53,18 +55,27 @@ namespace HCI_Projekat_1.Forms.Windows
                 string.IsNullOrEmpty(nameTextBox.Text) || string.IsNullOrEmpty(surnameTextBox.Text) || string.IsNullOrEmpty(jmbTextBox.Text) ||
                 string.IsNullOrEmpty(addressTextBox.Text) || string.IsNullOrEmpty(numberTextBox.Text))
             {
-                MessageBox.Show("Sva polja forme moraju biti validno popunjena", "Greska pri unosu", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("FormNotValid"), LanguageUtil.GetTranslation("InputError"), MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             if (passwordTextBox.Text != repeatPasswordTextBox.Text)
             {
-                MessageBox.Show("Lozinke moraju da se poklapaju", "Greska pri unosu", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(LanguageUtil.GetTranslation("FormNotValid"), LanguageUtil.GetTranslation("InputError"), MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             bool role = ((UserType)roleComboBox.SelectedValue) == UserType.Manager;
             Employee=new Employee { Username = usernameTextBox.Text, Password = passwordTextBox.Text,Name=nameTextBox.Text,Surname=surnameTextBox.Text,
             Jmb=jmbTextBox.Text,Adresa=addressTextBox.Text,PhoneNumber=numberTextBox.Text,Uloga=role};
+            isClosedByButton = true;
             this.Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!isClosedByButton)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }
