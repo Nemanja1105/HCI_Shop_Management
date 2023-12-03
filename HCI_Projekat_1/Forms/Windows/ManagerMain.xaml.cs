@@ -32,8 +32,10 @@ namespace HCI_Projekat_1
                 LanguageUtil.ChangeLanguage(employee.Language);
             LanguageUtil.CurrentLanguage = employee.Language;
             Employee = employee;
+            this.Title = "Manager";
             if (!Employee.Uloga)//radnik
             {
+                this.Title = "Worker";
                 userItem.Visibility = Visibility.Collapsed;
                 productItem.Visibility = Visibility.Collapsed;
                 procurementItem.Visibility = Visibility.Collapsed;
