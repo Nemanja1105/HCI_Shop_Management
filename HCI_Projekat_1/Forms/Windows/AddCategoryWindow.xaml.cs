@@ -33,6 +33,8 @@ namespace HCI_Projekat_1.Forms.Windows
         public AddCategoryWindow(Category category)
         {
             InitializeComponent();
+            this.mainLabel.Content = LanguageUtil.GetTranslation("UpdateCategory");
+            this.Title = LanguageUtil.GetTranslation("UpdateCategory");
             this.Category = new Category { Id = category.Id, Name = category.Name };
             this.buttonText.Text = LanguageUtil.GetTranslation("Update");
             buttonImage.Source = new BitmapImage(new Uri("/Images/update.png", UriKind.Relative));

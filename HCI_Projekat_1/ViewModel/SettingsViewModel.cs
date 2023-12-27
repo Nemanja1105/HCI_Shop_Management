@@ -36,6 +36,8 @@ namespace HCI_Projekat_1.ViewModel
             Employee request=new Employee { Id = employee.Id,Theme=Theme.Name };
             await this.service.Update(request);
             ThemeUtil.ChangeTheme(new Uri(Theme.Path));
+            employee.Theme = Theme.Name;
+            
         }
 
         public async Task ChangeLanguage()

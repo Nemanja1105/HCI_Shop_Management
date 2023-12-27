@@ -32,6 +32,8 @@ namespace HCI_Projekat_1.Forms.Windows
         public AddSuplierWindow(Supplier supplier)
         {
             InitializeComponent();
+            this.mainLabel.Content = LanguageUtil.GetTranslation("UpdateSupplier");
+            this.Title = LanguageUtil.GetTranslation("UpdateSupplier");
             this.Supplier = new Supplier { Id = supplier.Id, Name = supplier.Name,Address=supplier.Address,PhoneNumber=supplier.PhoneNumber };
             this.buttonText.Text = LanguageUtil.GetTranslation("Update");
             buttonImage.Source = new BitmapImage(new Uri("/Images/update.png", UriKind.Relative));

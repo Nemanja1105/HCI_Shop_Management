@@ -10,6 +10,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using HCI_Projekat_1.Util;
+using System.Windows;
 
 namespace HCI_Projekat_1.ViewModel
 {
@@ -21,7 +22,7 @@ namespace HCI_Projekat_1.ViewModel
         private ObservableCollection<Product> data;
         public ObservableCollection<Product> Data { get { return this.data; } set { data = value; OnPropertyChanged(); } }
         public List<Category> Categories { get; set; } = new List<Category>();
-
+        private readonly Category allCat=new Category(LanguageUtil.GetTranslation("All"));
         private Category categoryFilter = new Category(LanguageUtil.GetTranslation("All"));
         private String searchFilter = "";
         public Category CategoryFilter { get { return categoryFilter; } set { this.categoryFilter = value; FindAllByFilter(); } }
@@ -59,7 +60,8 @@ namespace HCI_Projekat_1.ViewModel
 
         public void FindAllByFilter()
         {
-            if (CategoryFilter.Name == "All" && String.IsNullOrEmpty(SearchFilter))
+           
+            if (CategoryFilter.Name == allCat.Name && String.IsNullOrEmpty(SearchFilter))
             {
                 Data = new ObservableCollection<Product>(products);
                 return;
@@ -67,7 +69,7 @@ namespace HCI_Projekat_1.ViewModel
             var query = products.AsQueryable();
             if (!String.IsNullOrEmpty(SearchFilter))
                 query = query.Where((el) => el.Name.ToUpper().StartsWith(SearchFilter.ToUpper()));
-            if (CategoryFilter.Name != "All")
+            if (CategoryFilter.Name != allCat.Name)
             {
                 query = query.Where((el) => el.Category.Name == CategoryFilter.Name);
             }

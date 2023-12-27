@@ -28,7 +28,7 @@
     <system:String x:Key="RepeatPassword">Ponovljena lozinka</system:String>
     <system:String x:Key="Role">Uloga</system:String>
     <system:String x:Key="Worker">Radnik</system:String>
-    <system:String x:Key="Manager">Menadzer</system:String>
+    <system:String x:Key="Manager">Menadžer</system:String>
     <system:String x:Key="All">Svi</system:String>
     <system:String x:Key="DbExceptionMain">Desila se greška prilikom komunikacije sa bazom podataka</system:String>
     <system:String x:Key="DbExceptionMessage">Greška u komunikaciji</system:String>
@@ -81,10 +81,10 @@
     <system:String x:Key="PasswordChangeSucc">Lozinka uspješno promjenjena.</system:String>
     <system:String x:Key="OperationSucc">Operacija uspješna</system:String>
     <system:String x:Key="OperationUnsucc">Operacija neuspješna</system:String>
-    <system:String x:Key="PasswordMismatch">Lozinke se ne poklapaju. Pokušajte ponovo.</system:String>
+    <system:String x:Key="PasswordMismatch">Stara lozinka se ne poklapa. Pokušajte ponovo.</system:String>
     <system:String x:Key="SerbianLanguage">Srpski</system:String>
     <system:String x:Key="EnglishLanguage">Engleski</system:String>
-    <system:String x:Key="PaymentType">Način plačanja</system:String>
+    <system:String x:Key="PaymentType">Način plaćanja</system:String>
     <system:String x:Key="FromDate">Datum od</system:String>
     <system:String x:Key="ToDate">Datum do</system:String>
     <system:String x:Key="ViewDetails">Pregled detalja</system:String>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using Microsoft.EntityFrameworkCore;
 using MySql.EntityFrameworkCore.Extensions;
 
@@ -35,8 +36,7 @@ public partial class ShopManagementContext : DbContext
     public virtual DbSet<Supplier> Supplier { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySQL("server=localhost;database=shop_management;uid=root;pwd=Nemanja@123");
+        => optionsBuilder.UseMySQL(ConfigurationManager.ConnectionStrings["MyConnectionString"].ConnectionString);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

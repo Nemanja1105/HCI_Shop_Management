@@ -51,20 +51,20 @@ namespace HCI_Projekat_1.Forms.Windows
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(usernameTextBox.Text) || string.IsNullOrEmpty(passwordTextBox.Text) || String.IsNullOrEmpty(repeatPasswordTextBox.Text) ||
+            if (string.IsNullOrEmpty(usernameTextBox.Text) || string.IsNullOrEmpty(passwordTextBox.Password) || String.IsNullOrEmpty(repeatPasswordTextBox.Password) ||
                 string.IsNullOrEmpty(nameTextBox.Text) || string.IsNullOrEmpty(surnameTextBox.Text) || string.IsNullOrEmpty(jmbTextBox.Text) ||
                 string.IsNullOrEmpty(addressTextBox.Text) || string.IsNullOrEmpty(numberTextBox.Text))
             {
                 MessageBox.Show(LanguageUtil.GetTranslation("FormNotValid"), LanguageUtil.GetTranslation("InputError"), MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if (passwordTextBox.Text != repeatPasswordTextBox.Text)
+            if (passwordTextBox.Password != repeatPasswordTextBox.Password)
             {
                 MessageBox.Show(LanguageUtil.GetTranslation("FormNotValid"), LanguageUtil.GetTranslation("InputError"), MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
             bool role = ((UserType)roleComboBox.SelectedValue) == UserType.Manager;
-            Employee=new Employee { Username = usernameTextBox.Text, Password = passwordTextBox.Text,Name=nameTextBox.Text,Surname=surnameTextBox.Text,
+            Employee=new Employee { Username = usernameTextBox.Text, Password = passwordTextBox.Password,Name=nameTextBox.Text,Surname=surnameTextBox.Text,
             Jmb=jmbTextBox.Text,Adresa=addressTextBox.Text,PhoneNumber=numberTextBox.Text,Uloga=role};
             isClosedByButton = true;
             this.Close();

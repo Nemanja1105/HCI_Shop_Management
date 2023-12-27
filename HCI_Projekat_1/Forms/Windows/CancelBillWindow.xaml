@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Projekat_1"
         mc:Ignorable="d"
-        Title="{DynamicResource CancelBillDet}" Height="220" Width="350"
-MinHeight="220" MinWidth="350" WindowStartupLocation="CenterScreen" Closing="Window_Closing" ResizeMode="NoResize" >
+        Title="{DynamicResource CancelBillDet}" Height="230" Width="350"
+MinHeight="230" MinWidth="350" WindowStartupLocation="CenterScreen" Closing="Window_Closing" ResizeMode="NoResize" >
     <Grid>
         <Grid.RowDefinitions>
-        <RowDefinition Height="1*"></RowDefinition>
+        <RowDefinition Height="1.2*"></RowDefinition>
         <RowDefinition Height="3*"></RowDefinition>
-        <RowDefinition Height="1*"></RowDefinition>
+        <RowDefinition Height="1.1*"></RowDefinition>
     </Grid.RowDefinitions>
     <StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal" >
             <Label  FontWeight="Bold" FontSize="24" Name="mainLabel"  Content="{DynamicResource CancelBillDet}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -27,7 +27,7 @@ MinHeight="220" MinWidth="350" WindowStartupLocation="CenterScreen" Closing="Win
 
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" FontSize="14" FontWeight="Bold" Margin="10 0 0 0" Content="{DynamicResource Reason}"></Label>
-        <local:PlaceholderTextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Reason}" Margin="10 10 10 10" FontSize="16" Placeholder="{DynamicResource EnterReason}" AcceptsReturn="True" TextWrapping="Wrap"/>
+            <local:PlaceholderTextBox Grid.Row="0"  Grid.Column="1" Width="150" Style="{StaticResource PlaceholderTextBoxStyle}" Text="{Binding Reason}" Margin="10 10 10 10" FontSize="16" Placeholder="{DynamicResource EnterReason}"  TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"/>
         </Grid>
 
     <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Height="30">

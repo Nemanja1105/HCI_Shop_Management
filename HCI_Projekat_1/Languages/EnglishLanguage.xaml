@@ -80,7 +80,7 @@
     <system:String x:Key="PasswordChangeSucc">Password successfully changed.</system:String>
     <system:String x:Key="OperationSucc">Operation successful</system:String>
     <system:String x:Key="OperationUnsucc">Operation unsuccessful</system:String>
-    <system:String x:Key="PasswordMismatch">Passwords do not match. Please try again.</system:String>
+    <system:String x:Key="PasswordMismatch">Old password not match. Please try again.</system:String>
     <system:String x:Key="SerbianLanguage">Serbian</system:String>
     <system:String x:Key="EnglishLanguage">English</system:String>
     <system:String x:Key="PaymentType">Payment type</system:String>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Projekat_1"
         mc:Ignorable="d"
-        Title="{DynamicResource AddCategory}" Height="170" Width="350"
+        Title="{DynamicResource AddCategory}" Height="170" Width="370"
         MinHeight="170" MinWidth="350" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
